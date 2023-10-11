@@ -88,18 +88,9 @@ if (router.currentRoute.value.query.sessionExpired) {
   <section class="py-4 py-md-5 my-5">
     <div class="container py-md-5">
       <div class="row">
-        <div class="col-md-6 text-center">
-          <img
-            class="img-fluid w-100"
-            src="src/assets/img/illustrations/login.svg"
-            alt="login-img"
-          />
-        </div>
         <div class="col-md-5 col-xl-4 text-center text-md-start">
           <h2 class="display-6 fw-bold mb-5">
-            <span class="underline pb-1">
-              <strong>Login</strong>
-            </span>
+              <strong>Giriş</strong>
           </h2>
           <form @submit.prevent="login">
             <div class="mb-3">
@@ -118,42 +109,22 @@ if (router.currentRoute.value.query.sessionExpired) {
                 v-model="loginRequest.password"
                 type="password"
                 name="password"
-                placeholder="Password"
+                placeholder="Şifre"
               />
             </div>
             <div class="mb-5">
               <button class="btn btn-primary shadow" type="submit">
-                Log in
+                Giriş
               </button>
             </div>
             <div v-if="errorMessage" class="alert alert-danger">
               {{ errorMessage }}
             </div>
             <div v-if="sessionExpired" class="alert alert-warning">
-              Your session has expired.
+              Oturumunuz sonlandı.
               <br />
-              Please log in again.
+              Lütfen tekrar giriş yapın.
             </div>
-            <p class="text-muted">
-              Dont have an account?
-              <router-link to="/signup"
-                >Sign up
-                <img
-                  src="src/assets/img/arrow-right.svg"
-                  alt="Arrow Right Icon"
-                />
-              </router-link>
-            </p>
-            <p class="text-muted">
-              Forgot your password?
-              <router-link to="/forgotten-password"
-                >Yes
-                <img
-                  src="src/assets/img/arrow-right.svg"
-                  alt="Arrow Right Icon"
-                />
-              </router-link>
-            </p>
           </form>
         </div>
       </div>

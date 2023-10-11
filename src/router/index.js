@@ -1,13 +1,10 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "@/views/HomeView.vue";
-import Register from "@/views/Register.vue";
 import Login from "@/views/Login.vue";
 import NotFoundView from "@/views/NotFoundView.vue";
-import ForgottenPasswordView from "@/views/ForgottenPasswordView.vue";
 import AdminPage from "@/views/AdminPage.vue";
 import { useAuthStore } from "@/stores";
 import UserPage from "@/views/UserPage.vue";
-import ResetPasswordPage from "@/views/ResetPasswordPage.vue";
 import AuthenticatedUserPage from "@/views/AuthenticatedUserPage.vue";
 
 const router = createRouter({
@@ -19,27 +16,9 @@ const router = createRouter({
       component: HomeView,
     },
     {
-      path: "/signup",
-      name: "signup",
-      component: Register,
-      beforeEnter: redirectIfAuthenticated,
-    },
-    {
       path: "/login",
       name: "login",
       component: Login,
-      beforeEnter: redirectIfAuthenticated,
-    },
-    {
-      path: "/forgotten-password",
-      name: "forgotten-password",
-      component: ForgottenPasswordView,
-      beforeEnter: redirectIfAuthenticated,
-    },
-    {
-      path: "/reset-password",
-      name: "reset-password",
-      component: ResetPasswordPage,
       beforeEnter: redirectIfAuthenticated,
     },
     {

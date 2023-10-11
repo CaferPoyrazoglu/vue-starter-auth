@@ -84,7 +84,7 @@ const logout = async () => {
   >
     <div class="container">
       <router-link class="navbar-brand d-flex align-items-center" to="/"
-        ><span>Brand</span></router-link
+        ><span>Golive</span></router-link
       >
       <button
         data-bs-toggle="collapse"
@@ -112,20 +112,14 @@ const logout = async () => {
           v-if="!isAuthenticated"
           class="btn btn-outline-primary"
           to="/login"
-          >Log in</router-link
-        >
-        <router-link
-          v-if="!isAuthenticated"
-          class="btn btn-outline-secondary"
-          to="/signup"
-          >Sign up</router-link
+          >Giriş</router-link
         >
         <router-link
           v-if="isAuthenticated"
           class="btn btn-outline-primary"
           @click="logout"
           to="/signup"
-          >Log out
+          >Çıkış
         </router-link>
       </div>
     </div>
