@@ -42,11 +42,11 @@ const submit = async () => {
       // The request was made but no response was received.
       // for example a CORS error
       showErrorMessage(
-        "Unable to connect to the server. Please try again later.",
+        "Sunucuya bağlanılamadı. Lütfen daha sonra tekrar deneyin.",
       );
     } else {
       // Something else went wrong
-      showErrorMessage("An error occurred while processing your request.");
+      showErrorMessage("İşlem sırasında bir hata ile karşılaşıldı.");
     }
   }
 };

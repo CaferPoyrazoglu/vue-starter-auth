@@ -13,8 +13,8 @@ async function getMessage() {
     if (e.response) message.value = e.response.data;
     else if (e.request)
       message.value =
-        "Unable to connect to the server. Please try again later.";
-    else message.value = "An error occurred while processing your request.";
+        "Sunucuya bağlanılamadı. Lütfen daha sonra tekrar deneyin.";
+    else message.value = "İşlem sırasında bir hata ile karşılaşıldı.";
   }
 }
 

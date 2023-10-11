@@ -22,9 +22,9 @@ const getMessage = async () => {
     } else if (e.request) {
       console.error(e.request);
       message.value =
-        "Unable to connect to the server. Please try again later.";
+        "Sunucuya bağlanılamadı. Lütfen daha sonra tekrar deneyin.";
     } else {
-      message.value = "An error occurred while processing your request.";
+      message.value = "İşlem sırasında bir hata ile karşılaşıldı.";
     }
   }
 };
