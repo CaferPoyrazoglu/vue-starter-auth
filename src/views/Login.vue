@@ -20,14 +20,14 @@ async function login() {
 
     // send the login request to the server
     const response = await axiosInstance.post(
-      "auth/authenticate", // the endpoint
+      "auth/signin", // the endpoint
       loginRequest.value, // the request body
       { withCredentials: true },
     );
 
     // get the token from the response
-    const accessToken = response.data.access_token;
-    const refreshToken = response.data.refresh_token;
+    const accessToken = response.data.token;
+    const refreshToken = response.data.token;
 
     // set the token in local storage
     localStorage.setItem("access_token", accessToken);

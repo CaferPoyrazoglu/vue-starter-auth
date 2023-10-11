@@ -110,7 +110,7 @@ const logout = async () => {
         </ul>
         <router-link
           v-if="!isAuthenticated"
-          class="btn btn-outline-primary"
+          class="btn"
           to="/login"
           >Giriş</router-link
         >
