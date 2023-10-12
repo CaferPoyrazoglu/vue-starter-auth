@@ -6,7 +6,7 @@ import { useAuthStore } from "@/stores";
 import AuthenticatedUserPage from "@/views/AuthenticatedUserPage.vue";
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.VITE_API_URL),
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: "/",
