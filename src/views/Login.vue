@@ -15,49 +15,37 @@ const router = useRouter();
 
 async function login() {
   try {
-    // reset the error message
     clearMessages();
 
-    // send the login request to the server
     const response = await axiosInstance.post(
-      "auth/signin", // the endpoint
-      loginRequest.value, // the request body
+      "auth/signin",
+      loginRequest.value,
       { withCredentials: true },
     );
 
-    // get the token from the response
     const accessToken = response.data.token;
     const refreshToken = response.data.token;
 
-    // set the token in local storage
     localStorage.setItem("access_token", accessToken);
     localStorage.setItem("refresh_token", refreshToken);
 
-    // update the authorization header
     axiosInstance.defaults.headers.common[
       "Authorization"
     ] = `Bearer ${accessToken}`;
 
-    // extract the user role from the token
     const userRole = extractUserRoleFromToken(accessToken);
 
-    // call the stores login method this will update the stores state
     authStore.login(userRole);
 
-    // redirect to the home page
     await router.push("/");
   } catch (error) {
     if (error.response) {
-      // An error response was received from the server
       showErrorMessage(error.response.data.message);
     } else if (error.request) {
-      // The request was made but no response was received.
-      // For example, a CORS error
       showErrorMessage(
         "Sunucuya bağlanılamadı. Lütfen daha sonra tekrar deneyin.",
       );
     } else {
-      // Something else went wrong
       showErrorMessage("İşlem sırasında bir hata ile karşılaşıldı.");
     }
   }
@@ -77,8 +65,6 @@ function extractUserRoleFromToken(token) {
   return decodedToken.role;
 }
 
-// Check if the route query parameter "sessionExpired" is present
-// If it is, set the sessionExpired flag to true, showing the session expired message
 if (router.currentRoute.value.query.sessionExpired) {
   sessionExpired.value = true;
 }

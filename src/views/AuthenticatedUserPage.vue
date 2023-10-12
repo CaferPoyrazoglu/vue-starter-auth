@@ -1,24 +1,4 @@
 <script setup>
-import { ref, onMounted } from "vue";
-import axiosInstance from "@/api/axiosInstance";
-
-const message = ref("");
-
-async function getMessage() {
-  /*try {
-    const response = await axiosInstance.get("/home");
-    if (response.status === 200) message.value = response.data;
-  } catch (e) {
-    console.error(e.request);
-    if (e.response) message.value = e.response.data;
-    else if (e.request)
-      message.value =
-        "Sunucuya bağlanılamadı. Lütfen daha sonra tekrar deneyin.";
-    else message.value = "İşlem sırasında bir hata ile karşılaşıldı.";
-  }*/
-}
-
-onMounted(getMessage);
 </script>
 
 <template>
@@ -27,9 +7,6 @@ onMounted(getMessage);
       <h1 class="display-4 fw-bold mb-5">
         <span>Hesaplar</span>
       </h1>
-      <div>
-        <h2>{{ message }}</h2>
-      </div>
     </div>
   </section>
 </template>
