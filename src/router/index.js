@@ -59,30 +59,4 @@ function authenticatedGuard(to, from, next) {
   else next();
 }
 
-function userGuard(to, from, next) {
-  const authStore = useAuthStore();
-
-  const isUserAuthenticated = authStore.isUserAuthenticated;
-  console.warn(
-    "authStore.isUserAuthenticated : ",
-    authStore.isUserAuthenticated,
-  );
-  const isUser = authStore.isUser;
-  console.warn("authStore.isUser : ", authStore.isUser);
-
-  const isUserAuthenticatedAndAuthorized = isUserAuthenticated && isUser;
-  const isUserAuthenticatedAndNotAuthorized = isUserAuthenticated && !isUser;
-
-  if (!isUserAuthenticated) {
-    console.warn("Giriş yapılmamış.");
-    next({ name: "login" });
-  }
-  if (isUserAuthenticatedAndAuthorized)
-    next();
-  if (isUserAuthenticatedAndNotAuthorized) {
-    next({ name: "home" });
-    console.warn("Bu sayfayı görüntülemek için yetkiniz yok.");
-  }
-}
-
 export default router;
