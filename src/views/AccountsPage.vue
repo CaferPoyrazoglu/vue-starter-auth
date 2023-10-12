@@ -5,9 +5,9 @@
     <section class="py-10 center">
         <div class="grid ">
             <h2 class="text-4xl font-extrabold dark:text-white">Hesaplar</h2>
-            <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+      <hr class="h-px bg-transparent border-0 dark:bg-gray-700">
 
-            <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
+            <div class="py-5 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
                 <!--Card 1-->
                 <div class="rounded overflow-hidden shadow-lg">
                     <div class="px-6 py-4">
