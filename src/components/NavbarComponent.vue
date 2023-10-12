@@ -17,8 +17,7 @@ function checkAuthenticationStateAndUpdateStore() {
   ) {
     authStore.logout();
     router.push("/login");
-  }
-  else if (!authStore.isUserAuthenticated) {
+  } else if (!authStore.isUserAuthenticated) {
     const accessToken = localStorage.getItem("access_token");
     const decodedToken = JSON.parse(atob(accessToken.split(".")[1]));
     const userRole = decodedToken.role;
@@ -57,51 +56,42 @@ const logout = async () => {
 </script>
 
 <template>
-  <nav
-    class="navbar navbar-light navbar-expand-md fixed-top navbar-shrink py-3"
-    id="mainNav"
-  >
-    <div class="container">
-      <router-link class="navbar-brand d-flex align-items-center" to="/"
-        ><span>Golive</span></router-link
-      >
-      <button
-        data-bs-toggle="collapse"
-        class="navbar-toggler"
-        data-bs-target="#navcol-1"
-      >
-        <span class="visually-hidden"></span
-        ><span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navcol-1">
-        <ul class="navbar-nav mx-auto">
-          <li v-if="isAuthenticated" class="nav-item">
-            <router-link class="nav-link" to="/accounts"
-              >Hesaplar</router-link
-            >
-          </li>
-          <li v-if="isAdmin" class="nav-item">
-            <router-link class="nav-link" to="/admin">ADMIN</router-link>
-          </li>
-          <li v-if="isUser" class="nav-item">
-            <router-link class="nav-link" to="/user">USER</router-link>
-          </li>
-        </ul>
-        <router-link
-          v-if="!isAuthenticated"
-          class="btn"
-          to="/login"
-          >Giriş</router-link
-        >
-        <router-link
-          v-if="isAuthenticated"
-          class="btn"
-          @click="logout"
-          to="/signup"
-          >Çıkış
-        </router-link>
+  <nav class="navbar navbar-light navbar-expand-md fixed-top navbar-shrink py-1 px-10" id="mainNav">
+    <nav class="bg-white border-gray-200 dark:bg-gray-900">
+      <div class="flex flex-wrap items-center justify-between mx-auto p-4">
+        <a href="https://flowbite.com/" class="flex items-center">
+          <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 mr-3" alt="Flowbite Logo" />
+          <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Golive</span>
+        </a>
+        <button data-collapse-toggle="navbar-default" type="button"
+          class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+          aria-controls="navbar-default" aria-expanded="false">
+          <span class="sr-only">Open main menu</span>
+          <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M1 1h15M1 7h15M1 13h15" />
+          </svg>
+        </button>
+        <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+          <ul
+            class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+            <li>
+              <a href="#"
+                class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
+                aria-current="page">Anasayfa</a>
+            </li>
+            <li>
+              <a href="#"
+                class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Hesaplar</a>
+            </li>
+            <li>
+              <a href="#"
+                class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Çıkış</a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
+    </nav>
   </nav>
 </template>
 

@@ -2,11 +2,9 @@
 </script>
 
 <template>
-  <section class="py-5 mt-5">
-    <div class="container">
-      <h1 class="display-4 fw-bold mb-5">
-        <span>Anasayfa</span>
-      </h1>
-    </div>
-  </section>
-</template>
+  <section class="py-10 center">
+      <div class="grid ">
+          <h2 class="text-4xl font-extrabold dark:text-white">Anasayfa</h2>
+          <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+  </div>
+</section></template>

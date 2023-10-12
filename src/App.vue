@@ -8,4 +8,9 @@ import NavbarComponentVue from "./components/NavbarComponent.vue";
   <RouterView />
 </template>
 
-<style scoped></style>
+<style>
+.center{
+  margin: auto;
+  width: 75%;
+}
+</style>
