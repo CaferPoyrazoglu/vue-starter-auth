@@ -76,7 +76,7 @@ const logout = async () => {
       <div class="collapse navbar-collapse" id="navcol-1">
         <ul class="navbar-nav mx-auto">
           <li v-if="isAuthenticated" class="nav-item">
-            <router-link class="nav-link" to="/authenticated"
+            <router-link class="nav-link" to="/accounts"
               >Hesaplar</router-link
             >
           </li>

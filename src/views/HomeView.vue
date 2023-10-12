@@ -1,19 +1,12 @@
-<script setup></script>
+<script setup>
+</script>
 
 <template>
-  <header class="pt-3">
-    <div class="container pt-4 pt-xl-5">
-      <div class="row pt-5">
-        <div class="col-md-8 text-center text-md-start mx-auto">
-          <div class="text-center">
-            <h1 class="display-4 fw-bold mb-5">
-              Anasayfa
-            </h1>
-          </div>
-        </div>
-        <div class="col-12 col-lg-10 mx-auto"></div>
-      </div>
+  <section class="py-5 mt-5">
+    <div class="container">
+      <h1 class="display-4 fw-bold mb-5">
+        <span>Anasayfa</span>
+      </h1>
     </div>
-  </header>
-
+  </section>
 </template>
