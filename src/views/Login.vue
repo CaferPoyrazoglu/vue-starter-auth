@@ -24,10 +24,8 @@ async function login() {
     );
 
     const accessToken = response.data.token;
-    const refreshToken = response.data.token;
 
     localStorage.setItem("access_token", accessToken);
-    localStorage.setItem("refresh_token", refreshToken);
 
     axiosInstance.defaults.headers.common[
       "Authorization"
@@ -73,7 +71,7 @@ if (router.currentRoute.value.query.sessionExpired) {
 <template>
   <section class="py-10 center">
     <div
-      class="center w-full bg-white rounded-lg dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+      class="center w-full bg-white rounded-lg dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700 shadow-2xl">
       <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
         <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
           Hesabınıza giriş yapın
@@ -83,13 +81,12 @@ if (router.currentRoute.value.query.sessionExpired) {
             <label for="email"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white form-control">E-Mail</label>
             <input v-model="loginRequest.email" required="required" type="email" name="email"
-              class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="name@company.com">
+              class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
           </div>
           <div>
             <label for="password"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white form-control">Şifre</label>
-            <input v-model="loginRequest.password" type="password" name="password" placeholder="Şifre"
+            <input v-model="loginRequest.password" type="password" name="password"
               class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
           </div>
           <button type="submit"

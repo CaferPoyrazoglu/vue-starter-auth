@@ -4,6 +4,7 @@ import Login from "@/views/Login.vue";
 import NotFoundView from "@/views/NotFoundView.vue";
 import { useAuthStore } from "@/stores";
 import AccountsPage from "@/views/AccountsPage.vue";
+import AdminPage from "@/views/AdminPage.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -23,6 +24,12 @@ const router = createRouter({
       path: "/accounts",
       name: "/accounts",
       component: AccountsPage,
+      beforeEnter: authenticatedGuard,
+    },
+    {
+      path: "/admin",
+      name: "/admin",
+      component: AdminPage,
       beforeEnter: authenticatedGuard,
     },
     {

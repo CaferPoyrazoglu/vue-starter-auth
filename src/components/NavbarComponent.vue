@@ -56,12 +56,12 @@ const logout = async () => {
 </script>
 
 <template>
-  <nav class="navbar navbar-light navbar-expand-md fixed-top navbar-shrink py-1 px-10 shadow-xl" id="mainNav">
-    <nav class="bg-white border-gray-200 dark:bg-gray-900">
-      <div class="flex flex-wrap items-center justify-between mx-auto p-4">
+  <nav class="navbar bg-blue-950 navbar-light navbar-expand-md fixed-top navbar-shrink py-1 px-10 shadow-2xl" id="mainNav">
+      <div class="flex flex-wrap items-center justify-between mx-auto p-2">
         <router-link class="btn" to="/">
           <a class="flex items-center">
-            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Golive</span>
+            <img class="h-auto max-w-full scale-75" src="src/assets/img/logo-white.png" alt="image description">
+            <span class="self-center text-2xl font-semibold whitespace-nowrap text-white">Hesap Yöneticisi</span>
           </a>
         </router-link>
 
@@ -76,18 +76,24 @@ const logout = async () => {
         </button>
         <div class="hidden w-full md:block md:w-auto" id="navbar-default">
           <ul
-            class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+            class="font-medium flex flex-col p-4 md:p-0 mt-4 border text-white md:flex-row md:space-x-8 md:mt-0 md:border-0">
             <li v-if="isAuthenticated" class="nav-item">
               <router-link class="nav-link" to="/accounts">Hesaplar</router-link>
             </li>
+            <li v-if="isAuthenticated" class="nav-item">
+              <router-link class="nav-link" to="/admin">Yönetim</router-link>
+            </li>
             <li>
-              <router-link v-if="isAuthenticated" class="btn" @click="logout" to="/signup">Çıkış
+              <router-link v-if="isAuthenticated" class="btn" @click="logout" to="/login">Çıkış
+              </router-link>
+            </li>
+            <li>
+              <router-link v-if="!isAuthenticated" class="btn" to="/login">Giriş
               </router-link>
             </li>
           </ul>
         </div>
       </div>
-    </nav>
   </nav>
 </template>
 
