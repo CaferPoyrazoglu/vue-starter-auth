@@ -4,7 +4,6 @@ import Login from "@/views/Login.vue";
 import NotFoundView from "@/views/NotFoundView.vue";
 import AdminPage from "@/views/AdminPage.vue";
 import { useAuthStore } from "@/stores";
-import UserPage from "@/views/UserPage.vue";
 import AuthenticatedUserPage from "@/views/AuthenticatedUserPage.vue";
 
 const router = createRouter({
@@ -32,12 +31,6 @@ const router = createRouter({
       name: "admin",
       component: AdminPage,
       beforeEnter: adminGuard,
-    },
-    {
-      path: "/user",
-      name: "userPage",
-      component: UserPage,
-      beforeEnter: userGuard,
     },
     {
       path: "/404",

@@ -5,7 +5,7 @@ import axiosInstance from "@/api/axiosInstance";
 const message = ref("");
 
 async function getMessage() {
-  try {
+  /*try {
     const response = await axiosInstance.get("/home");
     if (response.status === 200) message.value = response.data;
   } catch (e) {
@@ -15,7 +15,7 @@ async function getMessage() {
       message.value =
         "Sunucuya bağlanılamadı. Lütfen daha sonra tekrar deneyin.";
     else message.value = "İşlem sırasında bir hata ile karşılaşıldı.";
-  }
+  }*/
 }
 
 onMounted(getMessage);
@@ -25,7 +25,7 @@ onMounted(getMessage);
   <section class="py-5 mt-5">
     <div class="container">
       <h1 class="display-4 fw-bold mb-5">
-        <span class="underline">Authenticated</span> Page
+        <span>Hesaplar</span>
       </h1>
       <div>
         <h2>{{ message }}</h2>

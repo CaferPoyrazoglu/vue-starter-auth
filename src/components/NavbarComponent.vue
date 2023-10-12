@@ -56,7 +56,7 @@ onUnmounted(() => {
 const logout = async () => {
   try {
     // make a logout request to the server
-    await axiosInstance.post("auth/logout");
+    //await axiosInstance.post("auth/logout");
 
     // remove the token from local storage
     localStorage.removeItem("access_token");
@@ -98,7 +98,7 @@ const logout = async () => {
         <ul class="navbar-nav mx-auto">
           <li v-if="isAuthenticated" class="nav-item">
             <router-link class="nav-link" to="/authenticated"
-              >Authenticated</router-link
+              >Hesaplar</router-link
             >
           </li>
           <li v-if="isAdmin" class="nav-item">
@@ -116,7 +116,7 @@ const logout = async () => {
         >
         <router-link
           v-if="isAuthenticated"
-          class="btn btn-outline-primary"
+          class="btn"
           @click="logout"
           to="/signup"
           >Çıkış
