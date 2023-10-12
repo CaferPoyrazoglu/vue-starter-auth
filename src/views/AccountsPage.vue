@@ -7,9 +7,9 @@
             <h2 class="text-4xl font-extrabold">Hesaplar</h2>
             <hr class="h-px bg-transparent border-0">
 
-            <div class="py-5 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
+            <div class="py-5 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-5">
                 <!--Card 1-->
-                <div class="rounded overflow-hidden shadow-2xl bg-white rounded-xl rounded-xl outline outline-2  outline-offset-2 outline-gray-200 outline outline-2  outline-offset-2 outline-gray-200">
+                <div class="rounded overflow-hidden shadow-2xl bg-white rounded-xl rounded-xl outline outline-4 outline-blue-500">
                     <div class="px-6 py-4">
                         <div class="font-bold text-xl mb-2">Bursagaz SAP Test</div>
                         <p class="text-gray-900 text-base">
@@ -40,7 +40,7 @@
                     
                 </div>
                 <!--Card 1-->
-                <div class="rounded overflow-hidden shadow-2xl bg-white rounded-xl rounded-xl outline outline-2  outline-offset-2 outline-gray-200">
+                <div class="rounded overflow-hidden shadow-2xl bg-white rounded-xl rounded-xl outline outline-4 outline-red-500">
                     <div class="px-6 py-4">
                         <div class="font-bold text-xl mb-2">Çorumgaz</div>
                         <p class="text-gray-900 text-base">

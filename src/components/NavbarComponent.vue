@@ -56,7 +56,7 @@ const logout = async () => {
 </script>
 
 <template>
-  <nav class="navbar bg-blue-950 navbar-light navbar-expand-md fixed-top navbar-shrink py-2 px-10 shadow-2xl" id="mainNav">
+  <nav class="navbar bg-gradient-to-r from-blue-950 via-blue-950 to-blue-950 navbar-light navbar-expand-md fixed-top navbar-shrink py-2 px-10 shadow-2xl" id="mainNav">
       <div class="flex flex-wrap items-center justify-between mx-auto p-2">
         <router-link class="btn" to="/">
           <a class="flex items-center">
@@ -81,6 +81,9 @@ const logout = async () => {
             </li>
             <li v-if="isAuthenticated" class="nav-item">
               <router-link class="nav-link" to="/admin">Yönetim</router-link>
+            </li>
+            <li v-if="isAuthenticated" class="nav-item">
+              <router-link class="nav-link" to="/profile">Profil</router-link>
             </li>
             <li>
               <router-link v-if="isAuthenticated" class="btn" @click="logout" to="/login">Çıkış
