@@ -24,7 +24,7 @@ import NavbarComponentVue from "./components/NavbarComponent.vue";
 }
 
 body {
-  background-color: rgb(245, 250, 255);
+  background-color: rgb(255, 255, 255);
 }
 
 .center {

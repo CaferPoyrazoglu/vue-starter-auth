@@ -9,163 +9,192 @@
 
             <div class="py-5 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
                 <!--Card 1-->
-                <div class="rounded overflow-hidden shadow-2xl bg-white rounded-xl rounded-xl">
+                <div class="rounded overflow-hidden shadow-2xl bg-white rounded-xl rounded-xl outline outline-2  outline-offset-2 outline-gray-200 outline outline-2  outline-offset-2 outline-gray-200">
                     <div class="px-6 py-4">
-                        <div class="font-bold text-xl mb-2">Socar SAP Test Sistem</div>
-                        <p class="text-gray-700 text-base">
-                            Kullanıcı Adı: KEGOMI
+                        <div class="font-bold text-xl mb-2">Bursagaz SAP Test</div>
+                        <p class="text-gray-900 text-base">
+                            <span class="font-bold">Kullanıcı Adı:</span>
+                            cpoyrazoglu
                         </p>
-                        <p class="text-gray-700 text-base">
-                            Şifre: Golive.2023
+                        <p class="text-gray-900 text-base">
+                            <span class="font-bold">Şifre:</span>
+                            Golive.2023
+                        </p>
+                        <p class="text-gray-900 text-base">
+                            <span class="font-bold">Firma:</span>
+                            Socar
+                        </p>
+                        <p class="text-gray-900 text-base">
+                            <span class="font-bold">Oluşturulma Tarihi:</span>
+                            05.08.2023 10:09
+                        </p>
+                        <p class="text-gray-900 text-base">
+                            <span class="font-bold">Son Değiştirilme Tarihi:</span>
+                            06.09.2023 15:33
+                        </p>
+                        <p class="text-gray-900 text-base">
+                            <span class="font-bold">Bilgi:</span>
+                            Bilgiler her hafta güncellenmektedir. Giriş yapamadığınız takdirde güncel giriş bilgilerini burada bulabilirsiniz.
                         </p>
                     </div>
-                    <div class="px-6 pt-4 pb-2">
-                        <span
-                            class="inline-block bg-gray-100 text-black rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">#socar</span>
-                        <span
-                            class="inline-block bg-gray-100 text-black rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">#bursagaz</span>
-                    </div>
+                    
                 </div>
                 <!--Card 1-->
-                <div class="rounded overflow-hidden shadow-2xl bg-white rounded-xl">
+                <div class="rounded overflow-hidden shadow-2xl bg-white rounded-xl rounded-xl outline outline-2  outline-offset-2 outline-gray-200">
                     <div class="px-6 py-4">
-                        <div class="font-bold text-xl mb-2">Socar SAP Test Sistem</div>
-                        <p class="text-gray-700 text-base">
-                            Kullanıcı Adı: KEGOMI
+                        <div class="font-bold text-xl mb-2">Çorumgaz</div>
+                        <p class="text-gray-900 text-base">
+                            <span class="font-bold">Kullanıcı Adı:</span>
+                            cpoyrazoglu
                         </p>
-                        <p class="text-gray-700 text-base">
-                            Şifre: Golive.2023
+                        <p class="text-gray-900 text-base">
+                            <span class="font-bold">Şifre:</span>
+                            Golive.2023
+                        </p>
+                        <p class="text-gray-900 text-base">
+                            <span class="font-bold">Firma:</span>
+                            Socar
+                        </p>
+                        <p class="text-gray-900 text-base">
+                            <span class="font-bold">Oluşturulma Tarihi:</span>
+                            05.08.2023 10:09
+                        </p>
+                        <p class="text-gray-900 text-base">
+                            <span class="font-bold">Son Değiştirilme Tarihi:</span>
+                            06.09.2023 15:33
+                        </p>
+                        <p class="text-gray-900 text-base">
+                            <span class="font-bold">Bilgi:</span>
+                            Bilgiler her hafta güncellenmektedir. Giriş yapamadığınız takdirde güncel giriş bilgilerini burada bulabilirsiniz.
                         </p>
                     </div>
-                    <div class="px-6 pt-4 pb-2">
-                        <span
-                            class="inline-block bg-gray-100 text-black rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">#socar</span>
-                        <span
-                            class="inline-block bg-gray-100 text-black rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">#bursagaz</span>
-                    </div>
-                </div><!--Card 1-->
-                <div class="rounded overflow-hidden shadow-2xl bg-white rounded-xl">
-                    <div class="px-6 py-4">
-                        <div class="font-bold text-xl mb-2">Socar SAP Test Sistem</div>
-                        <p class="text-gray-700 text-base">
-                            Kullanıcı Adı: KEGOMI
-                        </p>
-                        <p class="text-gray-700 text-base">
-                            Şifre: Golive.2023
-                        </p>
-                    </div>
-                    <div class="px-6 pt-4 pb-2">
-                        <span
-                            class="inline-block bg-gray-100 text-black rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">#socar</span>
-                        <span
-                            class="inline-block bg-gray-100 text-black rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">#bursagaz</span>
-                    </div>
+                    
                 </div>
-                <!--Card 1-->
-                <div class="rounded overflow-hidden shadow-2xl bg-white rounded-xl">
+                 <!--Card 1-->
+                 <div class="rounded overflow-hidden shadow-2xl bg-white rounded-xl rounded-xl outline outline-2  outline-offset-2 outline-gray-200">
                     <div class="px-6 py-4">
-                        <div class="font-bold text-xl mb-2">Socar SAP Test Sistem</div>
-                        <p class="text-gray-700 text-base">
-                            Kullanıcı Adı: KEGOMI
+                        <div class="font-bold text-xl mb-2">Zorlu</div>
+                        <p class="text-gray-900 text-base">
+                            <span class="font-bold">Kullanıcı Adı:</span>
+                            cpoyrazoglu
                         </p>
-                        <p class="text-gray-700 text-base">
-                            Şifre: Golive.2023
+                        <p class="text-gray-900 text-base">
+                            <span class="font-bold">Şifre:</span>
+                            Golive.2023
+                        </p>
+                        <p class="text-gray-900 text-base">
+                            <span class="font-bold">Firma:</span>
+                            Socar
+                        </p>
+                        <p class="text-gray-900 text-base">
+                            <span class="font-bold">Oluşturulma Tarihi:</span>
+                            05.08.2023 10:09
+                        </p>
+                        <p class="text-gray-900 text-base">
+                            <span class="font-bold">Son Değiştirilme Tarihi:</span>
+                            06.09.2023 15:33
+                        </p>
+                        <p class="text-gray-900 text-base">
+                            <span class="font-bold">Bilgi:</span>
+                            Bilgiler her hafta güncellenmektedir. Giriş yapamadığınız takdirde güncel giriş bilgilerini burada bulabilirsiniz.
                         </p>
                     </div>
-                    <div class="px-6 pt-4 pb-2">
-                        <span
-                            class="inline-block bg-gray-100 text-black rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">#socar</span>
-                        <span
-                            class="inline-block bg-gray-100 text-black rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">#bursagaz</span>
-                    </div>
-                </div><!--Card 1-->
-                <div class="rounded overflow-hidden shadow-2xl bg-white rounded-xl">
-                    <div class="px-6 py-4">
-                        <div class="font-bold text-xl mb-2">Socar SAP Test Sistem</div>
-                        <p class="text-gray-700 text-base">
-                            Kullanıcı Adı: KEGOMI
-                        </p>
-                        <p class="text-gray-700 text-base">
-                            Şifre: Golive.2023
-                        </p>
-                    </div>
-                    <div class="px-6 pt-4 pb-2">
-                        <span
-                            class="inline-block bg-gray-100 text-black rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">#socar</span>
-                        <span
-                            class="inline-block bg-gray-100 text-black rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">#bursagaz</span>
-                    </div>
+                    
                 </div>
-                <!--Card 1-->
-                <div class="rounded overflow-hidden shadow-2xl bg-white rounded-xl">
+                 <!--Card 1-->
+                 <div class="rounded overflow-hidden shadow-2xl bg-white rounded-xl rounded-xl outline outline-2  outline-offset-2 outline-gray-200">
                     <div class="px-6 py-4">
-                        <div class="font-bold text-xl mb-2">Socar SAP Test Sistem</div>
-                        <p class="text-gray-700 text-base">
-                            Kullanıcı Adı: KEGOMI
+                        <div class="font-bold text-xl mb-2">Tredaş</div>
+                        <p class="text-gray-900 text-base">
+                            <span class="font-bold">Kullanıcı Adı:</span>
+                            cpoyrazoglu
                         </p>
-                        <p class="text-gray-700 text-base">
-                            Şifre: Golive.2023
+                        <p class="text-gray-900 text-base">
+                            <span class="font-bold">Şifre:</span>
+                            Golive.2023
+                        </p>
+                        <p class="text-gray-900 text-base">
+                            <span class="font-bold">Firma:</span>
+                            Socar
+                        </p>
+                        <p class="text-gray-900 text-base">
+                            <span class="font-bold">Oluşturulma Tarihi:</span>
+                            05.08.2023 10:09
+                        </p>
+                        <p class="text-gray-900 text-base">
+                            <span class="font-bold">Son Değiştirilme Tarihi:</span>
+                            06.09.2023 15:33
+                        </p>
+                        <p class="text-gray-900 text-base">
+                            <span class="font-bold">Bilgi:</span>
+                            Bilgiler her hafta güncellenmektedir. Giriş yapamadığınız takdirde güncel giriş bilgilerini burada bulabilirsiniz.
                         </p>
                     </div>
-                    <div class="px-6 pt-4 pb-2">
-                        <span
-                            class="inline-block bg-gray-100 text-black rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">#socar</span>
-                        <span
-                            class="inline-block bg-gray-100 text-black rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">#bursagaz</span>
-                    </div>
-                </div><!--Card 1-->
-                <div class="rounded overflow-hidden shadow-2xl bg-white rounded-xl">
-                    <div class="px-6 py-4">
-                        <div class="font-bold text-xl mb-2">Socar SAP Test Sistem</div>
-                        <p class="text-gray-700 text-base">
-                            Kullanıcı Adı: KEGOMI
-                        </p>
-                        <p class="text-gray-700 text-base">
-                            Şifre: Golive.2023
-                        </p>
-                    </div>
-                    <div class="px-6 pt-4 pb-2">
-                        <span
-                            class="inline-block bg-gray-100 text-black rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">#socar</span>
-                        <span
-                            class="inline-block bg-gray-100 text-black rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">#bursagaz</span>
-                    </div>
+                    
                 </div>
-                <!--Card 1-->
-                <div class="rounded overflow-hidden shadow-2xl bg-white rounded-xl">
+                 <!--Card 1-->
+                 <div class="rounded overflow-hidden shadow-2xl bg-white rounded-xl rounded-xl outline outline-2  outline-offset-2 outline-gray-200">
                     <div class="px-6 py-4">
-                        <div class="font-bold text-xl mb-2">Socar SAP Test Sistem</div>
-                        <p class="text-gray-700 text-base">
-                            Kullanıcı Adı: KEGOMI
+                        <div class="font-bold text-xl mb-2">Sedaş</div>
+                        <p class="text-gray-900 text-base">
+                            <span class="font-bold">Kullanıcı Adı:</span>
+                            cpoyrazoglu
                         </p>
-                        <p class="text-gray-700 text-base">
-                            Şifre: Golive.2023
+                        <p class="text-gray-900 text-base">
+                            <span class="font-bold">Şifre:</span>
+                            Golive.2023
+                        </p>
+                        <p class="text-gray-900 text-base">
+                            <span class="font-bold">Firma:</span>
+                            Socar
+                        </p>
+                        <p class="text-gray-900 text-base">
+                            <span class="font-bold">Oluşturulma Tarihi:</span>
+                            05.08.2023 10:09
+                        </p>
+                        <p class="text-gray-900 text-base">
+                            <span class="font-bold">Son Değiştirilme Tarihi:</span>
+                            06.09.2023 15:33
+                        </p>
+                        <p class="text-gray-900 text-base">
+                            <span class="font-bold">Bilgi:</span>
+                            Bilgiler her hafta güncellenmektedir. Giriş yapamadığınız takdirde güncel giriş bilgilerini burada bulabilirsiniz.
                         </p>
                     </div>
-                    <div class="px-6 pt-4 pb-2">
-                        <span
-                            class="inline-block bg-gray-100 text-black rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">#socar</span>
-                        <span
-                            class="inline-block bg-gray-100 text-black rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">#bursagaz</span>
-                    </div>
-                </div><!--Card 1-->
-                <div class="rounded overflow-hidden shadow-2xl bg-white rounded-xl">
-                    <div class="px-6 py-4">
-                        <div class="font-bold text-xl mb-2">Socar SAP Test Sistem</div>
-                        <p class="text-gray-700 text-base">
-                            Kullanıcı Adı: KEGOMI
-                        </p>
-                        <p class="text-gray-700 text-base">
-                            Şifre: Golive.2023
-                        </p>
-                    </div>
-                    <div class="px-6 pt-4 pb-2">
-                        <span
-                            class="inline-block bg-gray-100 text-black rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">#socar</span>
-                        <span
-                            class="inline-block bg-gray-100 text-black rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2">#bursagaz</span>
-                    </div>
+                    
                 </div>
+                 <!--Card 1-->
+                 <div class="rounded overflow-hidden shadow-2xl bg-white rounded-xl rounded-xl outline outline-2  outline-offset-2 outline-gray-200">
+                    <div class="px-6 py-4">
+                        <div class="font-bold text-xl mb-2">Sistem AL</div>
+                        <p class="text-gray-900 text-base">
+                            <span class="font-bold">Kullanıcı Adı:</span>
+                            cpoyrazoglu
+                        </p>
+                        <p class="text-gray-900 text-base">
+                            <span class="font-bold">Şifre:</span>
+                            Golive.2023
+                        </p>
+                        <p class="text-gray-900 text-base">
+                            <span class="font-bold">Firma:</span>
+                            Socar
+                        </p>
+                        <p class="text-gray-900 text-base">
+                            <span class="font-bold">Oluşturulma Tarihi:</span>
+                            05.08.2023 10:09
+                        </p>
+                        <p class="text-gray-900 text-base">
+                            <span class="font-bold">Son Değiştirilme Tarihi:</span>
+                            06.09.2023 15:33
+                        </p>
+                        <p class="text-gray-900 text-base">
+                            <span class="font-bold">Bilgi:</span>
+                            Bilgiler her hafta güncellenmektedir. Giriş yapamadığınız takdirde güncel giriş bilgilerini burada bulabilirsiniz.
+                        </p>
+                    </div>
+                    
+                </div>
+                
             </div>
         </div>
     </section>
