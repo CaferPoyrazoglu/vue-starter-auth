@@ -6,6 +6,7 @@ import { useAuthStore } from "@/stores";
 import AccountsPage from "@/views/AccountsPage.vue";
 import AdminPage from "@/views/AdminPage.vue";
 import ProfilePage from "@/views/ProfilePage.vue";
+import UsersPage from "@/views/UsersPage.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -25,6 +26,12 @@ const router = createRouter({
       path: "/accounts",
       name: "/accounts",
       component: AccountsPage,
+      beforeEnter: authenticatedGuard,
+    },
+    {
+      path: "/users",
+      name: "/users",
+      component: UsersPage,
       beforeEnter: authenticatedGuard,
     },
     {
