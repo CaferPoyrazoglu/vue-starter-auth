@@ -8,6 +8,7 @@ import AdminPage from "@/views/AdminPage.vue";
 import ProfilePage from "@/views/ProfilePage.vue";
 import UsersPage from "@/views/UsersPage.vue";
 import CompaniesPage from "@/views/CompaniesPage.vue";
+import AccountListPage from "@/views/AccountListPage.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -27,6 +28,12 @@ const router = createRouter({
       path: "/accounts",
       name: "/accounts",
       component: AccountsPage,
+      beforeEnter: authenticatedGuard,
+    },
+    {
+      path: "/account-list",
+      name: "/account-list",
+      component: AccountListPage,
       beforeEnter: authenticatedGuard,
     },
     {
