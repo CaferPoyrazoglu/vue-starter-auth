@@ -8,7 +8,7 @@
     
       <div class="bg-white py-7">
         <div class="text-gray-700">
-          <div class="grid md:grid-cols-1 text-xl">
+          <div class="grid md:grid-cols-1 text-md">
             <div class="grid grid-cols-2">
               <div class="px-4 py-2 font-semibold">Ad</div>
               <div class="px-4 py-2">Cafer</div>
