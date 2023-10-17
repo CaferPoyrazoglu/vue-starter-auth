@@ -1,3 +1,5 @@
+// noinspection JSCheckFunctionSignatures
+
 import axiosInstance from "@/api/axiosInstance";
 import router from "@/router";
 import {useAuthStore} from "@/stores";
