@@ -1,5 +1,5 @@
-import { createApp } from "vue";
-import { createPinia } from "pinia";
+import {createApp} from "vue";
+import {createPinia} from "pinia";
 import piniaPluginPersistedState from "pinia-plugin-persistedstate";
 import './index.css'
 

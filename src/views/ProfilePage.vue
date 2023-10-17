@@ -4,8 +4,8 @@
   <section class="py-10 center">
     <div class="grid">
       <h2 class="text-4xl font-extrabold">Profil</h2>
-      <hr class="h-px bg-transparent border-0" />
-    
+      <hr class="h-px bg-transparent border-0"/>
+
       <div class="bg-white py-7">
         <div class="text-gray-700">
           <div class="grid md:grid-cols-1 text-md">
