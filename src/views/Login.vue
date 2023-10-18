@@ -3,19 +3,21 @@ import {ref} from "vue";
 import axiosInstance from "@/api/axiosInstance";
 import {useAuthStore} from "@/stores";
 import {useRouter} from "vue-router";
+import LoadingPage from "@/views/LoadingPage.vue";
 
 const loginRequest = ref({
   email: "",
   password: "",
 });
-const errorMessage = ref("");
 const sessionExpired = ref(false);
 const authStore = useAuthStore();
 const router = useRouter();
+const isLoading = ref(false);
 
 async function login() {
   try {
-    clearMessages();
+    isLoading.value = true;
+
 
     const response = await axiosInstance.post(
         "auth/signin",
@@ -31,36 +33,14 @@ async function login() {
         "Authorization"
         ] = `Bearer ${accessToken}`;
 
-    const userRole = extractUserRoleFromToken(accessToken);
 
-    authStore.login(userRole);
+    authStore.login("ROLE_USER");
 
     await router.push("/");
+    isLoading.value = false;
   } catch (error) {
-    if (error.response) {
-      showErrorMessage(error.response.data.message);
-    } else if (error.request) {
-      showErrorMessage(
-          "Sunucuya bağlanılamadı. Lütfen daha sonra tekrar deneyin.",
-      );
-    } else {
-      showErrorMessage("İşlem sırasında bir hata ile karşılaşıldı.");
-    }
+
   }
-}
-
-function clearMessages() {
-  errorMessage.value = "";
-  sessionExpired.value = false;
-}
-
-function showErrorMessage(message) {
-  errorMessage.value = message;
-}
-
-function extractUserRoleFromToken(token) {
-  const decodedToken = JSON.parse(atob(token.split(".")[1]));
-  return decodedToken.role;
 }
 
 if (router.currentRoute.value.query.sessionExpired) {
@@ -69,7 +49,7 @@ if (router.currentRoute.value.query.sessionExpired) {
 </script>
 
 <template>
-  <section class="py-10 center">
+  <section v-if="!isLoading" class="py-10 center">
     <div
         class="center w-full bg-white rounded-lg dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700 shadow-2xl">
       <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
@@ -102,5 +82,6 @@ if (router.currentRoute.value.query.sessionExpired) {
       </div>
     </div>
   </section>
+  <LoadingPage v-else/>
 </template>
 

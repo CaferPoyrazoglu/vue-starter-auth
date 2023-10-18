@@ -1,15 +1,14 @@
 <script setup>
 import axiosInstance from "@/api/axiosInstance";
 import {useRouter} from "vue-router";
-import {onMounted, ref} from "vue";
+import {ref} from "vue";
 
 const router = useRouter();
 
 let accountList = ref(null);
 
-onMounted(async () => {
-  await fetchAccounts();
-});
+await fetchAccounts();
+
 
 async function fetchAccounts() {
   try {
@@ -23,6 +22,7 @@ async function fetchAccounts() {
   } catch (error) {
     if (error.response) {
       console.log(error.response.data.message);
+
     }
   }
 }
@@ -34,7 +34,8 @@ function getDate(date) {
 </script>
 
 <template>
-  <section class="py-10 center">
+
+<section class="py-10 center">
     <div class="grid ">
       <h2 class="text-4xl font-extrabold">Hesaplar</h2>
       <hr class="h-px bg-transparent border-0">

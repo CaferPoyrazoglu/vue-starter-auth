@@ -14,7 +14,8 @@
     "pinia-plugin-persist": "^1.0.0",
     "pinia-plugin-persistedstate": "^3.1.0",
     "vue": "^3.3.2",
-    "vue-router": "^4.2.0"
+    "vue-router": "^4.2.0",
+    "vue3-spinner": "^0.0.17"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",

@@ -873,7 +873,7 @@ vue-router@^4.2.0:
   dependencies:
     "@vue/devtools-api" "^6.5.0"
 
-"vue@^2.0.0 || >=3.0.0", "vue@^2.6.14 || ^3.3.0", "vue@^3.0.0-0 || ^2.6.0", vue@^3.2.0, vue@^3.2.25, vue@^3.3.2, vue@3.3.4:
+"vue@^2.0.0 || >=3.0.0", "vue@^2.6.14 || ^3.3.0", "vue@^3.0.0-0 || ^2.6.0", vue@^3.2.0, vue@^3.2.25, vue@^3.2.41, vue@^3.3.2, vue@3.3.4:
   version "3.3.4"
   resolved "https://registry.npmjs.org/vue/-/vue-3.3.4.tgz"
   integrity sha512-VTyEYn3yvIeY1Py0WaYGZsXnz3y5UnGi62GjVEqvEGPl6nxbOrCXbVOTQWBEJUqAyTUk2uJ5JLVnYJ6ZzGbrSw==
@@ -883,6 +883,13 @@ vue-router@^4.2.0:
     "@vue/runtime-dom" "3.3.4"
     "@vue/server-renderer" "3.3.4"
     "@vue/shared" "3.3.4"
+
+vue3-spinner@^0.0.17:
+  version "0.0.17"
+  resolved "https://registry.npmjs.org/vue3-spinner/-/vue3-spinner-0.0.17.tgz"
+  integrity sha512-iiOa1rRxMOFWmEExdPYwAgY+EavW21kPa0G3khS3vRVnDxVV2QPXHugBucZxpuyNijMZxR4mq+/ryNV7ziHK2Q==
+  dependencies:
+    vue "^3.2.41"
 
 wrappy@1:
   version "1.0.2"

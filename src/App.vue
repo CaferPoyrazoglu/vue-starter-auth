@@ -1,27 +1,27 @@
 <script setup>
 import {RouterView} from "vue-router";
 import NavbarComponentVue from "./components/NavbarComponent.vue";
+import LoadingPage from "@/views/LoadingPage.vue";
 </script>
 
 <template>
   <NavbarComponentVue/>
   <RouterView v-slot="{ Component }">
-    <transition mode="out-in" name="fade">
-      <component :is="Component"/>
-    </transition>
+    <template v-if="Component">
+      <Transition mode="out-in">
+        <Suspense timeout="0">
+          <component :is="Component"></component>
+          <template #fallback>
+            <LoadingPage/>
+          </template>
+        </Suspense>
+      </Transition>
+    </template>
   </RouterView>
 </template>
 
-<style>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.18s ease;
-}
 
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
+<style>
 
 body {
   background-color: rgb(255, 255, 255);
