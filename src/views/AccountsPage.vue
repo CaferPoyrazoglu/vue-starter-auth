@@ -28,14 +28,14 @@ async function fetchAccounts() {
 }
 
 function getDate(date) {
-  return new Date(date*1000).toLocaleString('tr-TR');
+  return new Date(date * 1000).toLocaleString('tr-TR');
 }
 
 </script>
 
 <template>
 
-<section class="py-10 center">
+  <section class="py-10 center">
     <div class="grid ">
       <h2 class="text-4xl font-extrabold">Hesaplar</h2>
       <hr class="h-px bg-transparent border-0">
