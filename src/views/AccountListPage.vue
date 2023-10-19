@@ -1,4 +1,39 @@
-<script setup></script>
+<script setup>
+import {ref} from "vue";
+import axiosInstance from "@/api/axiosInstance";
+import {Modal} from "flowbite-vue";
+
+let accountList = ref(null);
+
+await fetchAccounts();
+
+const isShowModal = ref(false)
+
+async function fetchAccounts() {
+  try {
+    const response = await axiosInstance.get(
+        "account/all",
+        {withCredentials: true},
+    );
+
+    accountList.value = response.data;
+
+  } catch (error) {
+    if (error.response) {
+      console.log(error.response.data.message);
+
+    }
+  }
+}
+
+function closeModal() {
+  isShowModal.value = false
+}
+
+function showModal() {
+  isShowModal.value = true
+}
+</script>
 
 <template>
   <section class="py-10 center">
@@ -27,267 +62,51 @@
             </th>
           </tr>
           </thead>
-          <tbody>
+          <tbody v-for="account in accountList" :key="account">
           <tr
               class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
 
             <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" scope="row">
-              Bursagaz SAP
+              {{ account.username }}
             </th>
             <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" scope="row">
-              Socar
+              {{ account.company.name }}
             </th>
             <td class="px-6 py-4">
-              <a class="font-medium text-blue-600 dark:text-red-500 hover:underline" href="#">Düzenle</a>
-            </td>
-          </tr>
-
-          </tbody>
-          <tbody>
-          <tr
-              class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-
-            <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" scope="row">
-              Kayserigaz SAP
-            </th>
-            <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" scope="row">
-              Socar
-            </th>
-            <td class="px-6 py-4">
-              <a class="font-medium text-blue-600 dark:text-red-500 hover:underline" href="#">Düzenle</a>
-            </td>
-          </tr>
-
-          </tbody>
-          <tbody>
-          <tr
-              class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-
-            <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" scope="row">
-              Çorumgaz SAP
-            </th>
-            <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" scope="row">
-              Ahlatcı
-            </th>
-            <td class="px-6 py-4">
-              <a class="font-medium text-blue-600 dark:text-red-500 hover:underline" href="#">Düzenle</a>
-            </td>
-          </tr>
-
-          </tbody>
-          <tbody>
-          <tr
-              class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-
-            <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" scope="row">
-              Fiori
-            </th>
-            <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" scope="row">
-              Golive
-            </th>
-            <td class="px-6 py-4">
-              <a class="font-medium text-blue-600 dark:text-red-500 hover:underline" href="#">Düzenle</a>
-            </td>
-          </tr>
-
-          </tbody>
-          <tbody>
-          <tr
-              class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-
-            <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" scope="row">
-              Bursagaz SAP
-            </th>
-            <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" scope="row">
-              Socar
-            </th>
-            <td class="px-6 py-4">
-              <a class="font-medium text-blue-600 dark:text-red-500 hover:underline" href="#">Düzenle</a>
-            </td>
-          </tr>
-
-          </tbody>
-          <tbody>
-          <tr
-              class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-
-            <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" scope="row">
-              Kayserigaz SAP
-            </th>
-            <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" scope="row">
-              Socar
-            </th>
-            <td class="px-6 py-4">
-              <a class="font-medium text-blue-600 dark:text-red-500 hover:underline" href="#">Düzenle</a>
-            </td>
-          </tr>
-
-          </tbody>
-          <tbody>
-          <tr
-              class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-
-            <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" scope="row">
-              Çorumgaz SAP
-            </th>
-            <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" scope="row">
-              Ahlatcı
-            </th>
-            <td class="px-6 py-4">
-              <a class="font-medium text-blue-600 dark:text-red-500 hover:underline" href="#">Düzenle</a>
-            </td>
-          </tr>
-
-          </tbody>
-          <tbody>
-          <tr
-              class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-
-            <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" scope="row">
-              Fiori
-            </th>
-            <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" scope="row">
-              Golive
-            </th>
-            <td class="px-6 py-4">
-              <a class="font-medium text-blue-600 dark:text-red-500 hover:underline" href="#">Düzenle</a>
-            </td>
-          </tr>
-
-          </tbody>
-          <tbody>
-          <tr
-              class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-
-            <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" scope="row">
-              Bursagaz SAP
-            </th>
-            <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" scope="row">
-              Socar
-            </th>
-            <td class="px-6 py-4">
-              <a class="font-medium text-blue-600 dark:text-red-500 hover:underline" href="#">Düzenle</a>
-            </td>
-          </tr>
-
-          </tbody>
-          <tbody>
-          <tr
-              class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-
-            <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" scope="row">
-              Kayserigaz SAP
-            </th>
-            <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" scope="row">
-              Socar
-            </th>
-            <td class="px-6 py-4">
-              <a class="font-medium text-blue-600 dark:text-red-500 hover:underline" href="#">Düzenle</a>
-            </td>
-          </tr>
-
-          </tbody>
-          <tbody>
-          <tr
-              class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-
-            <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" scope="row">
-              Çorumgaz SAP
-            </th>
-            <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" scope="row">
-              Ahlatcı
-            </th>
-            <td class="px-6 py-4">
-              <a class="font-medium text-blue-600 dark:text-red-500 hover:underline" href="#">Düzenle</a>
-            </td>
-          </tr>
-
-          </tbody>
-          <tbody>
-          <tr
-              class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-
-            <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" scope="row">
-              Fiori
-            </th>
-            <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" scope="row">
-              Golive
-            </th>
-            <td class="px-6 py-4">
-              <a class="font-medium text-blue-600 dark:text-red-500 hover:underline" href="#">Düzenle</a>
-            </td>
-          </tr>
-
-          </tbody>
-          <tbody>
-          <tr
-              class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-
-            <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" scope="row">
-              Bursagaz SAP
-            </th>
-            <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" scope="row">
-              Socar
-            </th>
-            <td class="px-6 py-4">
-              <a class="font-medium text-blue-600 dark:text-red-500 hover:underline" href="#">Düzenle</a>
-            </td>
-          </tr>
-
-          </tbody>
-          <tbody>
-          <tr
-              class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-
-            <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" scope="row">
-              Kayserigaz SAP
-            </th>
-            <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" scope="row">
-              Socar
-            </th>
-            <td class="px-6 py-4">
-              <a class="font-medium text-blue-600 dark:text-red-500 hover:underline" href="#">Düzenle</a>
+              <a class="font-medium text-blue-600 dark:text-red-500 hover:underline" @click="showModal" >Düzenle</a>
             </td>
           </tr>
 
           </tbody>
 
         </table>
-        <nav aria-label="Table navigation" class="flex items-center justify-between pt-4">
-          <ul class="inline-flex -space-x-px text-sm h-8">
-            <li>
-              <a class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                 href="#">Önceki</a>
-            </li>
-            <li>
-              <a class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                 href="#">1</a>
-            </li>
-            <li>
-              <a class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                 href="#">2</a>
-            </li>
-            <li>
-              <a aria-current="page"
-                 class="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
-                 href="#">3</a>
-            </li>
-            <li>
-              <a class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                 href="#">4</a>
-            </li>
-            <li>
-              <a class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                 href="#">5</a>
-            </li>
-            <li>
-              <a class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                 href="#">Sonraki</a>
-            </li>
-          </ul>
-        </nav>
+
       </div>
 
     </div>
   </section>
+  <Modal v-if="isShowModal" @close="closeModal">
+    <template #header>
+      <div class="flex items-center text-lg">
+        Uyarı
+      </div>
+    </template>
+    <template #body>
+      <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+        Kullanıcıyı silmek istediğinize emin misiniz?
+      </p>
+    </template>
+    <template #footer>
+      <div class="flex justify-between">
+        <button class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600" type="button"
+                @click="closeModal">
+          İptal
+        </button>
+        <button class="text-white bg-red-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button"
+                @click="closeModal">
+          Sil
+        </button>
+      </div>
+    </template>
+  </Modal>
 </template>

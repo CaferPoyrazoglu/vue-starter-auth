@@ -3,6 +3,15 @@ import {ref} from "vue";
 import {Modal} from "flowbite-vue";
 import axiosInstance from "@/api/axiosInstance";
 
+const selectedCompany = ref({
+  id: "",
+  name: ""
+});
+
+const newCompanyRequest = ref({
+  name: ""
+});
+
 let companyList = ref(null);
 
 await fetchCompanies();
@@ -26,13 +35,51 @@ async function fetchCompanies() {
   }
 }
 
+async function addNewComapny() {
+  try {
+
+    await axiosInstance.post(
+        "company/new",
+        newCompanyRequest.value,
+        {withCredentials: true},
+    );
+
+    await fetchCompanies();
+  } catch (error) {
+    if (error.response) {
+      console.log(error.response.data.message);
+
+    }
+  }
+}
+
+async function showDeleteModal(company) {
+  isShowModal.value = true
+  selectedCompany.value.id = company.id;
+  selectedCompany.value.name = company.name;
+}
+
+async function deleteCompany(){
+  try {
+     await axiosInstance.delete(
+        "company/delete/" + selectedCompany.value.id,
+        {withCredentials: true},
+    );
+
+    await fetchCompanies();
+    closeModal();
+  } catch (error) {
+    if (error.response) {
+      console.log(error.response.data.message);
+
+    }
+  }
+}
+
 function closeModal() {
   isShowModal.value = false
 }
 
-function showModal() {
-  isShowModal.value = true
-}
 </script>
 
 <template>
@@ -43,15 +90,18 @@ function showModal() {
 
       <div class="columns-2 py-5">
 
-        <input id="helper-text" aria-describedby="helper-text-explanation"
+        <form @submit.prevent="addNewComapny">
+          <input id="helper-text" v-model="newCompanyRequest.name" aria-describedby="helper-text-explanation"
                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                placeholder="Şirket adı">
 
-        <button
-            class="text-white bg-green-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-            type="button">
-          Ekle
-        </button>
+          <button
+              class="full text-white  bg-green-500 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+              type="submit">
+            Ekle
+          </button>
+        </form>
+
       </div>
 
       <div class="relative overflow-x-auto sm:rounded-lg">
@@ -83,45 +133,15 @@ function showModal() {
               <a class="font-medium text-blue-600 dark:text-red-500 hover:underline" href="#">Düzenle</a>
             </td>
             <td class="px-6 py-4">
-              <a class="font-medium text-red-600 dark:text-red-500 hover:underline" @click="showModal" >Sil</a>
+              <a class="font-medium text-red-600 dark:text-red-500 hover:underline" @click="showDeleteModal(company)">Sil</a>
             </td>
           </tr>
 
+
           </tbody>
+
         </table>
-        <nav aria-label="Table navigation" class="flex items-center justify-between pt-4">
-          <ul class="inline-flex -space-x-px text-sm h-8">
-            <li>
-              <a class="flex items-center justify-center px-3 h-8 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                 href="#">Önceki</a>
-            </li>
-            <li>
-              <a class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                 href="#">1</a>
-            </li>
-            <li>
-              <a class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                 href="#">2</a>
-            </li>
-            <li>
-              <a aria-current="page"
-                 class="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
-                 href="#">3</a>
-            </li>
-            <li>
-              <a class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                 href="#">4</a>
-            </li>
-            <li>
-              <a class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                 href="#">5</a>
-            </li>
-            <li>
-              <a class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                 href="#">Sonraki</a>
-            </li>
-          </ul>
-        </nav>
+
       </div>
 
     </div>
@@ -134,7 +154,7 @@ function showModal() {
     </template>
     <template #body>
       <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-        Kullanıcıyı silmek istediğinize emin misiniz?
+        {{selectedCompany.name}} adlı şirketi silmek istediğinize emin misiniz?
       </p>
     </template>
     <template #footer>
@@ -143,11 +163,13 @@ function showModal() {
                 @click="closeModal">
           İptal
         </button>
+
         <button class="text-white bg-red-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button"
-                @click="closeModal">
+                @click="deleteCompany(selectedCompany.id)">
           Sil
         </button>
       </div>
     </template>
   </Modal>
+
 </template>
