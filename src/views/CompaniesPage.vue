@@ -1,8 +1,30 @@
 <script setup>
 import {ref} from "vue";
 import {Modal} from "flowbite-vue";
+import axiosInstance from "@/api/axiosInstance";
+
+let companyList = ref(null);
+
+await fetchCompanies();
 
 const isShowModal = ref(false)
+
+async function fetchCompanies() {
+  try {
+    const response = await axiosInstance.get(
+        "company/all",
+        {withCredentials: true},
+    );
+
+    companyList.value = response.data;
+
+  } catch (error) {
+    if (error.response) {
+      console.log(error.response.data.message);
+
+    }
+  }
+}
 
 function closeModal() {
   isShowModal.value = false
@@ -50,12 +72,12 @@ function showModal() {
             </th>
           </tr>
           </thead>
-          <tbody>
+          <tbody v-for="company in companyList" :key="company">
           <tr
               class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
 
             <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" scope="row">
-              Socar
+              {{ company.name }}
             </th>
             <td class="px-6 py-4">
               <a class="font-medium text-blue-600 dark:text-red-500 hover:underline" href="#">Düzenle</a>
