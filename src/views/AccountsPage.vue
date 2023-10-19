@@ -1,7 +1,9 @@
 <script setup>
 import axiosInstance from '@/api/axiosInstance'
+import { useMessageStore } from '@/stores'
 import { ref } from 'vue'
 
+const messageStore = useMessageStore()
 let accountList = ref(null)
 
 fetchAccounts()
@@ -13,9 +15,15 @@ async function fetchAccounts() {
         })
 
         accountList.value = response.data
+        messageStore.status = false
     } catch (error) {
+        messageStore.status = true
         if (error.response) {
-            console.log(error.response.data.message)
+            messageStore.message = error.response.data.message
+        } else if (error.request) {
+            messageStore.message = 'Sunucuya bağlanılamıyor. Lütfen daha sonra tekrar deneyin.'
+        } else {
+            messageStore.message = 'İsteğiniz gerçekleştirilirken bir hata ile karşılaşıldı.'
         }
     }
 }

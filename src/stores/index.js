@@ -38,3 +38,10 @@ export const useLoadingStateStore = defineStore('is-loading', {
         isLoading: false,
     }),
 })
+
+export const useMessageStore = defineStore('message-store', {
+    state: () => ({
+        status: false,
+        message: '',
+    }),
+})
