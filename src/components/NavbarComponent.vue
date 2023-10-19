@@ -3,6 +3,7 @@ import axiosInstance from '@/api/axiosInstance'
 import router from '@/router'
 import { useAuthStore } from '@/stores'
 import { computed, onMounted, onUnmounted } from 'vue'
+import AlertComponent from '@/components/AlertComponent.vue'
 
 const authStore = useAuthStore()
 
@@ -87,13 +88,13 @@ const logout = async () => {
                 <ul
                     class="text-lg flex flex-col p-4 md:p-0 mt-4 border text-white md:flex-row md:space-x-4 md:mt-0 md:border-0">
                     <li v-if="isAuthenticated" class="nav-item">
-                        <router-link class="nav-link" to="/accounts">Hesaplar </router-link>
+                        <router-link class="nav-link" to="/accounts">Hesaplar</router-link>
                     </li>
                     <li v-if="isAuthenticated" class="nav-item">
-                        <router-link class="nav-link" to="/admin">Yönetim </router-link>
+                        <router-link class="nav-link" to="/admin">Yönetim</router-link>
                     </li>
                     <li v-if="isAuthenticated" class="nav-item">
-                        <router-link class="nav-link" to="/profile">Profil </router-link>
+                        <router-link class="nav-link" to="/profile">Profil</router-link>
                     </li>
                     <li>
                         <router-link v-if="isAuthenticated" class="btn" to="/login" @click="logout">
@@ -101,12 +102,13 @@ const logout = async () => {
                         </router-link>
                     </li>
                     <li>
-                        <router-link v-if="!isAuthenticated" class="btn" to="/login"> Giriş </router-link>
+                        <router-link v-if="!isAuthenticated" class="btn" to="/login"> Giriş</router-link>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
+    <AlertComponent />
 </template>
 
 <style scoped></style>

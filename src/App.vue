@@ -2,15 +2,10 @@
 import { RouterView } from 'vue-router'
 import NavbarComponentVue from './components/NavbarComponent.vue'
 import LoadingPage from '@/views/LoadingPage.vue'
-import AlertComponent from '@/components/AlertComponent.vue'
-import { useMessageStore } from '@/stores'
-
-const messageStore = useMessageStore()
 </script>
 
 <template>
     <NavbarComponentVue />
-    <AlertComponent v-if="messageStore.status" />
     <RouterView v-slot="{ Component }">
         <template v-if="Component">
             <Suspense timeout="0">

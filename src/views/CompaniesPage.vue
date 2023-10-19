@@ -14,7 +14,7 @@ const newCompanyRequest = ref({
 
 let companyList = ref(null)
 
-fetchCompanies()
+await fetchCompanies()
 
 const isShowModal = ref(false)
 

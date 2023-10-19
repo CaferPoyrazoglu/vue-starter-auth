@@ -11,6 +11,7 @@ function closeMessage() {
 
 <template>
     <div
+        v-if="messageStore.status"
         id="alert-1"
         class="flex items-center p-4 mb-4 text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400"
         role="alert">

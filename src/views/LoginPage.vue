@@ -2,8 +2,11 @@
 import { ref } from 'vue'
 import axiosInstance from '@/api/axiosInstance'
 import { useAuthStore, useLoadingStateStore } from '@/stores'
+import { useMessageStore } from '@/stores'
 import { useRouter } from 'vue-router'
 import LoadingPage from '@/views/LoadingPage.vue'
+
+const messageStore = useMessageStore()
 
 const loginRequest = ref({
     email: '',
@@ -24,10 +27,19 @@ async function login() {
         axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`
         authStore.login('ROLE_USER')
         await router.push('/')
-
+        messageStore.status = false
         loadingStatus.isLoading = false
     } catch (error) {
-        console.log(error)
+        messageStore.status = true
+        loadingStatus.isLoading = false
+        await router.push('/login')
+        if (error.response) {
+            messageStore.message = error.response.data.toString()
+        } else if (error.request) {
+            messageStore.message = 'Sunucuya bağlanılamıyor. Lütfen daha sonra tekrar deneyin.'
+        } else {
+            messageStore.message = 'İsteğiniz gerçekleştirilirken bir hata ile karşılaşıldı.'
+        }
     }
 }
 </script>
