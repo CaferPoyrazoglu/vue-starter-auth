@@ -2,10 +2,12 @@
 import { ref } from 'vue'
 import axiosInstance from '@/api/axiosInstance'
 import { Modal } from 'flowbite-vue'
+import { useMessageStore } from '@/stores'
 
 let accountList = ref(null)
+const messageStore = useMessageStore()
 
-fetchAccounts()
+await fetchAccounts()
 
 const isShowModal = ref(false)
 
@@ -17,8 +19,13 @@ async function fetchAccounts() {
 
         accountList.value = response.data
     } catch (error) {
+        messageStore.status = true
         if (error.response) {
-            console.log(error.response.data.message)
+            messageStore.message = error.response.data.toString()
+        } else if (error.request) {
+            messageStore.message = 'Sunucuya bağlanılamıyor. Lütfen daha sonra tekrar deneyin.'
+        } else {
+            messageStore.message = 'İsteğiniz gerçekleştirilirken bir hata ile karşılaşıldı.'
         }
     }
 }

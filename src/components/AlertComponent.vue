@@ -32,15 +32,10 @@ function closeMessage() {
             type="button"
             class="ml-auto -mx-1.5 -my-1.5 bg-blue-50 text-blue-500 rounded-lg focus:ring-2 focus:ring-blue-400 p-1.5 hover:bg-blue-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-blue-400 dark:hover:bg-gray-700"
             data-dismiss-target="#alert-1"
-            aria-label="Close">
+            aria-label="Close"
+            @click="closeMessage()">
             <span class="sr-only">Kapat</span>
-            <svg
-                class="w-3 h-3"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 14 14"
-                @click="closeMessage()">
+            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                 <path
                     stroke="currentColor"
                     stroke-linecap="round"

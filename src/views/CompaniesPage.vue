@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { Modal } from 'flowbite-vue'
 import axiosInstance from '@/api/axiosInstance'
+import { useMessageStore } from '@/stores'
 
 const selectedCompany = ref({
     id: '',
@@ -13,6 +14,8 @@ const newCompanyRequest = ref({
 })
 
 let companyList = ref(null)
+
+const messageStore = useMessageStore()
 
 await fetchCompanies()
 
@@ -26,8 +29,13 @@ async function fetchCompanies() {
 
         companyList.value = response.data
     } catch (error) {
+        messageStore.status = true
         if (error.response) {
-            console.log(error.response.data.message)
+            messageStore.message = error.response.data.toString()
+        } else if (error.request) {
+            messageStore.message = 'Sunucuya bağlanılamıyor. Lütfen daha sonra tekrar deneyin.'
+        } else {
+            messageStore.message = 'İsteğiniz gerçekleştirilirken bir hata ile karşılaşıldı.'
         }
     }
 }
@@ -40,8 +48,13 @@ async function addNewComapny() {
 
         await fetchCompanies()
     } catch (error) {
+        messageStore.status = true
         if (error.response) {
-            console.log(error.response.data.message)
+            messageStore.message = error.response.data.toString()
+        } else if (error.request) {
+            messageStore.message = 'Sunucuya bağlanılamıyor. Lütfen daha sonra tekrar deneyin.'
+        } else {
+            messageStore.message = 'İsteğiniz gerçekleştirilirken bir hata ile karşılaşıldı.'
         }
     }
 }
@@ -61,9 +74,15 @@ async function deleteCompany() {
         await fetchCompanies()
         closeModal()
     } catch (error) {
+        messageStore.status = true
         if (error.response) {
-            console.log(error.response.data.message)
+            messageStore.message = error.response.data.toString()
+        } else if (error.request) {
+            messageStore.message = 'Sunucuya bağlanılamıyor. Lütfen daha sonra tekrar deneyin.'
+        } else {
+            messageStore.message = 'İsteğiniz gerçekleştirilirken bir hata ile karşılaşıldı.'
         }
+        closeModal()
     }
 }
 
@@ -120,6 +139,7 @@ function closeModal() {
                             <td class="px-6 py-4">
                                 <a
                                     class="font-medium text-red-600 dark:text-red-500 hover:underline"
+                                    href="#"
                                     @click="showDeleteModal(company)">
                                     Sil
                                 </a>
