@@ -6,7 +6,7 @@ import { ref } from 'vue'
 const messageStore = useMessageStore()
 let accountList = ref(null)
 
-fetchAccounts()
+await fetchAccounts()
 
 async function fetchAccounts() {
     try {
