@@ -1,8 +1,8 @@
 // noinspection JSCheckFunctionSignatures
 
-import {defineStore} from "pinia";
+import { defineStore } from 'pinia'
 
-export const useAuthStore = defineStore("auth", {
+export const useAuthStore = defineStore('auth', {
     state: () => ({
         isAuthenticated: false,
         userRole: null,
@@ -11,30 +11,30 @@ export const useAuthStore = defineStore("auth", {
         enabled: true,
         strategies: [
             {
-                key: "user",
+                key: 'user',
                 storage: localStorage,
             },
         ],
     },
     getters: {
         isUserAuthenticated: (state) => state.isAuthenticated,
-        isAdmin: (state) => state.userRole === "ROLE_ADMIN",
-        isUser: (state) => state.userRole === "ROLE_USER",
+        isAdmin: (state) => state.userRole === 'ROLE_ADMIN',
+        isUser: (state) => state.userRole === 'ROLE_USER',
     },
     actions: {
         login(userRole) {
-            this.isAuthenticated = true;
-            this.userRole = userRole;
+            this.isAuthenticated = true
+            this.userRole = userRole
         },
         logout() {
-            this.isAuthenticated = false;
-            this.userRole = null;
+            this.isAuthenticated = false
+            this.userRole = null
         },
     },
-});
+})
 
-export const useLoadingStateStore = defineStore("is-loading", {
+export const useLoadingStateStore = defineStore('is-loading', {
     state: () => ({
         isLoading: false,
-    })
-});
+    }),
+})
