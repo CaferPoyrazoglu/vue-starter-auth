@@ -6,8 +6,8 @@ import { useRouter } from 'vue-router'
 import LoadingPage from '@/views/LoadingPage.vue'
 
 const loginRequest = ref({
-  email: '',
-  password: '',
+    email: '',
+    password: '',
 })
 
 const authStore = useAuthStore()
@@ -15,28 +15,20 @@ const loadingStatus = useLoadingStateStore()
 const router = useRouter()
 
 async function login() {
-  try {
-    loadingStatus.isLoading = true
+    try {
+        loadingStatus.isLoading = true
 
-    const response = await axiosInstance.post(
-        'auth/signin',
-        loginRequest.value,
-        { withCredentials: true }
-    )
+        const response = await axiosInstance.post('auth/signin', loginRequest.value, { withCredentials: true })
+        const accessToken = response.data.token
+        localStorage.setItem('access_token', accessToken)
+        axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`
+        authStore.login('ROLE_USER')
+        await router.push('/')
 
-    const accessToken = response.data.token
-
-    localStorage.setItem('access_token', accessToken)
-
-    axiosInstance.defaults.headers.common[
-        'Authorization'
-        ] = `Bearer ${accessToken}`
-
-    authStore.login('ROLE_USER')
-
-    await router.push('/')
-    loadingStatus.isLoading = false
-  } catch (error) {}
+        loadingStatus.isLoading = false
+    } catch (error) {
+        console.log(error)
+    }
 }
 </script>
 
@@ -45,8 +37,7 @@ async function login() {
         <div
             class="center w-full bg-white rounded-lg dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700 shadow-2xl">
             <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-                <h1
-                    class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                     Hesabınıza giriş yapın
                 </h1>
                 <form class="space-y-4 md:space-y-6" @submit.prevent="login">

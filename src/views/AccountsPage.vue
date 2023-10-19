@@ -1,13 +1,10 @@
 <script setup>
 import axiosInstance from '@/api/axiosInstance'
-import { useRouter } from 'vue-router'
 import { ref } from 'vue'
-
-const router = useRouter()
 
 let accountList = ref(null)
 
-await fetchAccounts()
+fetchAccounts()
 
 async function fetchAccounts() {
     try {
@@ -34,8 +31,7 @@ function getDate(date) {
             <h2 class="text-4xl font-extrabold">Hesaplar</h2>
             <hr class="h-px bg-transparent border-0" />
 
-            <div
-                class="py-5 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-5">
+            <div class="py-5 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-5">
                 <div
                     v-for="account in accountList"
                     :key="account"
@@ -61,9 +57,7 @@ function getDate(date) {
                             {{ getDate(account.createdDate) }}
                         </p>
                         <p class="text-gray-900 text-base">
-                            <span class="font-bold"
-                                >Son Değiştirilme Tarihi:</span
-                            >
+                            <span class="font-bold">Son Değiştirilme Tarihi:</span>
                             {{ getDate(account.lastModifiedDate) }}
                         </p>
                         <p class="text-gray-900 text-base">

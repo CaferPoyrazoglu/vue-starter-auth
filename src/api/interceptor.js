@@ -7,27 +7,15 @@ import { useAuthStore } from '@/stores'
 axiosInstance.interceptors.response.use(
     (response) => response,
     async (error) => {
-        if (
-            error.response.status === 401 &&
-            error.response.data === 'Token süresi doldu.'
-        ) {
+        if (error.response.status === 401 && error.response.data === 'Token süresi doldu.') {
             console.log('Token süresi doldu, yenilemeye çalışılıyor.')
             try {
-                console.log(
-                    'Token yenilemesi için istek atılıyor.',
-                    localStorage.getItem('refresh_token')
-                )
-                const response = await axiosInstance.post(
-                    '/auth/refresh-token',
-                    null,
-                    {
-                        headers: {
-                            Authorization: `Bearer ${localStorage.getItem(
-                                'refresh_token'
-                            )}`,
-                        },
-                    }
-                )
+                console.log('Token yenilemesi için istek atılıyor.', localStorage.getItem('refresh_token'))
+                const response = await axiosInstance.post('/auth/refresh-token', null, {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('refresh_token')}`,
+                    },
+                })
                 console.log('response', response)
 
                 console.log('Token yenilendi: ', response.data.access_token)

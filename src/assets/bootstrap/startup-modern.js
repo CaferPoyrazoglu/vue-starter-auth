@@ -8,11 +8,7 @@
             var scrollTop =
                 window.pageYOffset !== undefined
                     ? window.pageYOffset
-                    : (
-                          document.documentElement ||
-                          document.body.parentNode ||
-                          document.body
-                      ).scrollTop
+                    : (document.documentElement || document.body.parentNode || document.body).scrollTop
 
             if (scrollTop > 100) {
                 mainNav.classList.add('navbar-shrink')

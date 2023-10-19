@@ -26,15 +26,11 @@
                             <div class="px-4 py-2">**********</div>
                         </div>
                         <div class="grid grid-cols-2">
-                            <div class="px-4 py-2 font-semibold">
-                                Oluşturma Tarihi
-                            </div>
+                            <div class="px-4 py-2 font-semibold">Oluşturma Tarihi</div>
                             <div class="px-4 py-2">05.08.2023 10:09</div>
                         </div>
                         <div class="grid grid-cols-2">
-                            <div class="px-4 py-2 font-semibold">
-                                Değiştirilme Tarihi
-                            </div>
+                            <div class="px-4 py-2 font-semibold">Değiştirilme Tarihi</div>
                             <div class="px-4 py-2">01.11.2023 11:13</div>
                         </div>
                     </div>

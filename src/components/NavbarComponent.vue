@@ -7,14 +7,9 @@ import { computed, onMounted, onUnmounted } from 'vue'
 const authStore = useAuthStore()
 
 const isAuthenticated = computed(() => authStore.isUserAuthenticated)
-const isAdmin = computed(() => authStore.isAdmin)
-const isUser = computed(() => authStore.isUser)
 
 function checkAuthenticationStateAndUpdateStore() {
-    if (
-        !localStorage.getItem('access_token') &&
-        !localStorage.getItem('refresh_token')
-    ) {
+    if (!localStorage.getItem('access_token') && !localStorage.getItem('refresh_token')) {
         authStore.logout()
         router.push('/login')
     } else if (!authStore.isUserAuthenticated) {
@@ -23,9 +18,7 @@ function checkAuthenticationStateAndUpdateStore() {
         const userRole = decodedToken.role
         authStore.login(userRole)
 
-        axiosInstance.defaults.headers.common[
-            'Authorization'
-        ] = `Bearer ${accessToken}`
+        axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`
 
         router.push('/')
     }
@@ -36,10 +29,7 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-    window.removeEventListener(
-        'storage',
-        checkAuthenticationStateAndUpdateStore
-    )
+    window.removeEventListener('storage', checkAuthenticationStateAndUpdateStore)
 })
 
 const logout = async () => {
@@ -97,36 +87,21 @@ const logout = async () => {
                 <ul
                     class="text-lg flex flex-col p-4 md:p-0 mt-4 border text-white md:flex-row md:space-x-4 md:mt-0 md:border-0">
                     <li v-if="isAuthenticated" class="nav-item">
-                        <router-link class="nav-link" to="/accounts"
-                            >Hesaplar</router-link
-                        >
+                        <router-link class="nav-link" to="/accounts">Hesaplar </router-link>
                     </li>
                     <li v-if="isAuthenticated" class="nav-item">
-                        <router-link class="nav-link" to="/admin"
-                            >Yönetim</router-link
-                        >
+                        <router-link class="nav-link" to="/admin">Yönetim </router-link>
                     </li>
                     <li v-if="isAuthenticated" class="nav-item">
-                        <router-link class="nav-link" to="/profile"
-                            >Profil</router-link
-                        >
+                        <router-link class="nav-link" to="/profile">Profil </router-link>
                     </li>
                     <li>
-                        <router-link
-                            v-if="isAuthenticated"
-                            class="btn"
-                            to="/login"
-                            @click="logout">
+                        <router-link v-if="isAuthenticated" class="btn" to="/login" @click="logout">
                             Çıkış
                         </router-link>
                     </li>
                     <li>
-                        <router-link
-                            v-if="!isAuthenticated"
-                            class="btn"
-                            to="/login">
-                            Giriş
-                        </router-link>
+                        <router-link v-if="!isAuthenticated" class="btn" to="/login"> Giriş </router-link>
                     </li>
                 </ul>
             </div>

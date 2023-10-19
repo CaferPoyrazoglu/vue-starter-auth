@@ -14,7 +14,7 @@ const newCompanyRequest = ref({
 
 let companyList = ref(null)
 
-await fetchCompanies()
+fetchCompanies()
 
 const isShowModal = ref(false)
 
@@ -54,12 +54,9 @@ async function showDeleteModal(company) {
 
 async function deleteCompany() {
     try {
-        await axiosInstance.delete(
-            'company/delete/' + selectedCompany.value.id,
-            {
-                withCredentials: true,
-            }
-        )
+        await axiosInstance.delete('company/delete/' + selectedCompany.value.id, {
+            withCredentials: true,
+        })
 
         await fetchCompanies()
         closeModal()
@@ -99,10 +96,8 @@ function closeModal() {
             </div>
 
             <div class="relative overflow-x-auto sm:rounded-lg">
-                <table
-                    class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                    <thead
-                        class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
                             <th class="px-6 py-3" scope="col">Şirket Adı</th>
                             <th class="px-6 py-3" scope="col">İşlem</th>
@@ -118,9 +113,7 @@ function closeModal() {
                                 {{ company.name }}
                             </th>
                             <td class="px-6 py-4">
-                                <a
-                                    class="font-medium text-blue-600 dark:text-red-500 hover:underline"
-                                    href="#">
+                                <a class="font-medium text-blue-600 dark:text-red-500 hover:underline" href="#">
                                     Düzenle
                                 </a>
                             </td>
@@ -142,8 +135,7 @@ function closeModal() {
             <div class="flex items-center text-lg">Uyarı</div>
         </template>
         <template #body>
-            <p
-                class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
                 {{ selectedCompany.name }}
                 adlı şirketi silmek istediğinize emin misiniz?
             </p>
