@@ -32,3 +32,9 @@ export const useAuthStore = defineStore("auth", {
         },
     },
 });
+
+export const useLoadingStateStore = defineStore("is-loading", {
+    state: () => ({
+        isLoading: false,
+    })
+});

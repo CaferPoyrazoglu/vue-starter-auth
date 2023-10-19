@@ -8,14 +8,12 @@ import LoadingPage from "@/views/LoadingPage.vue";
   <NavbarComponentVue/>
   <RouterView v-slot="{ Component }">
     <template v-if="Component">
-      <Transition mode="out-in">
         <Suspense timeout="0">
           <component :is="Component"></component>
           <template #fallback>
             <LoadingPage/>
           </template>
         </Suspense>
-      </Transition>
     </template>
   </RouterView>
 </template>

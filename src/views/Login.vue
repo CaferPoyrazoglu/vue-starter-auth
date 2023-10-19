@@ -2,6 +2,7 @@
 import {ref} from "vue";
 import axiosInstance from "@/api/axiosInstance";
 import {useAuthStore} from "@/stores";
+import {useLoadingStateStore} from "@/stores";
 import {useRouter} from "vue-router";
 import LoadingPage from "@/views/LoadingPage.vue";
 
@@ -9,15 +10,15 @@ const loginRequest = ref({
   email: "",
   password: "",
 });
-const sessionExpired = ref(false);
+
 const authStore = useAuthStore();
+const loadingStatus = useLoadingStateStore();
 const router = useRouter();
-const isLoading = ref(false);
 
 async function login() {
-  try {
-    isLoading.value = true;
 
+  try {
+    loadingStatus.isLoading = true;
 
     const response = await axiosInstance.post(
         "auth/signin",
@@ -37,19 +38,16 @@ async function login() {
     authStore.login("ROLE_USER");
 
     await router.push("/");
-    isLoading.value = false;
+    loadingStatus.isLoading = false;
   } catch (error) {
 
   }
 }
 
-if (router.currentRoute.value.query.sessionExpired) {
-  sessionExpired.value = true;
-}
 </script>
 
 <template>
-  <section v-if="!isLoading" class="py-10 center">
+  <section v-if="!loadingStatus.isLoading" class="py-10 center">
     <div
         class="center w-full bg-white rounded-lg dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700 shadow-2xl">
       <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
