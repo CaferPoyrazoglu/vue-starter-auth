@@ -4,12 +4,19 @@ import axiosInstance from '@/api/axiosInstance'
 import { Modal } from 'flowbite-vue'
 import { useMessageStore } from '@/stores'
 
-let accountList = ref(null)
 const messageStore = useMessageStore()
+const isUpdateModal = ref(false)
+let accountList = ref(null)
 
 await fetchAccounts()
 
-const isShowModal = ref(false)
+function closeUpdateModal() {
+    isUpdateModal.value = false
+}
+
+function showUpdateModal() {
+    isUpdateModal.value = true
+}
 
 async function fetchAccounts() {
     try {
@@ -28,14 +35,6 @@ async function fetchAccounts() {
             messageStore.message = 'İsteğiniz gerçekleştirilirken bir hata ile karşılaşıldı.'
         }
     }
-}
-
-function closeModal() {
-    isShowModal.value = false
-}
-
-function showModal() {
-    isShowModal.value = true
 }
 </script>
 
@@ -72,7 +71,8 @@ function showModal() {
                             <td class="px-6 py-4">
                                 <a
                                     class="font-medium text-blue-600 dark:text-red-500 hover:underline"
-                                    @click="showModal">
+                                    href="#"
+                                    @click="showUpdateModal">
                                     Düzenle
                                 </a>
                             </td>
@@ -82,29 +82,39 @@ function showModal() {
             </div>
         </div>
     </section>
-    <Modal v-if="isShowModal" @close="closeModal">
+    <Modal v-if="isUpdateModal" @close="closeUpdateModal">
         <template #header>
-            <div class="flex items-center text-lg">Uyarı</div>
+            <div class="flex items-center text-lg">Düzenle</div>
         </template>
         <template #body>
-            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                Kullanıcıyı silmek istediğinize emin misiniz?
-            </p>
+            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">some textfield here</p>
         </template>
         <template #footer>
             <div class="flex justify-between">
                 <button
                     class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
                     type="button"
-                    @click="closeModal">
+                    @click="closeUpdateModal">
                     İptal
                 </button>
-                <button
-                    class="text-white bg-red-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                    type="button"
-                    @click="closeModal">
-                    Sil
-                </button>
+                <div class="flex justify-between">
+                    <div class="px-2">
+                        <button
+                            class="text-white bg-red-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            type="button"
+                            @click="closeUpdateModal">
+                            Bu hesabı sil
+                        </button>
+                    </div>
+                    <div class="px-2">
+                        <button
+                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            type="button"
+                            @click="closeUpdateModal">
+                            Değişiklikleri kaydet
+                        </button>
+                    </div>
+                </div>
             </div>
         </template>
     </Modal>

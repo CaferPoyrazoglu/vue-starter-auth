@@ -13,13 +13,33 @@ const newCompanyRequest = ref({
     name: '',
 })
 
-let companyList = ref(null)
-
 const messageStore = useMessageStore()
+const isDeleteShowModal = ref(false)
+const isUpdateShowModal = ref(false)
+
+let companyList = ref(null)
 
 await fetchCompanies()
 
-const isShowModal = ref(false)
+async function showDeleteModal(company) {
+    isDeleteShowModal.value = true
+    selectedCompany.value.id = company.id
+    selectedCompany.value.name = company.name
+}
+
+async function showUpdateModal(company) {
+    isUpdateShowModal.value = true
+    selectedCompany.value.id = company.id
+    selectedCompany.value.name = company.name
+}
+
+function closeDeleteModal() {
+    isDeleteShowModal.value = false
+}
+
+function closeUpdateModal() {
+    isUpdateShowModal.value = false
+}
 
 async function fetchCompanies() {
     try {
@@ -59,20 +79,14 @@ async function addNewComapny() {
     }
 }
 
-async function showDeleteModal(company) {
-    isShowModal.value = true
-    selectedCompany.value.id = company.id
-    selectedCompany.value.name = company.name
-}
-
-async function deleteCompany() {
+async function updateCompany() {
     try {
-        await axiosInstance.delete('company/delete/' + selectedCompany.value.id, {
+        await axiosInstance.put('company/update/' + selectedCompany.value.id, selectedCompany.value.name, {
             withCredentials: true,
         })
 
         await fetchCompanies()
-        closeModal()
+        closeUpdateModal()
     } catch (error) {
         messageStore.status = true
         if (error.response) {
@@ -82,12 +96,29 @@ async function deleteCompany() {
         } else {
             messageStore.message = 'İsteğiniz gerçekleştirilirken bir hata ile karşılaşıldı.'
         }
-        closeModal()
+        closeUpdateModal()
     }
 }
 
-function closeModal() {
-    isShowModal.value = false
+async function deleteCompany() {
+    try {
+        await axiosInstance.delete('company/delete/' + selectedCompany.value.id, {
+            withCredentials: true,
+        })
+
+        await fetchCompanies()
+        closeDeleteModal()
+    } catch (error) {
+        messageStore.status = true
+        if (error.response) {
+            messageStore.message = error.response.data.toString()
+        } else if (error.request) {
+            messageStore.message = 'Sunucuya bağlanılamıyor. Lütfen daha sonra tekrar deneyin.'
+        } else {
+            messageStore.message = 'İsteğiniz gerçekleştirilirken bir hata ile karşılaşıldı.'
+        }
+        closeDeleteModal()
+    }
 }
 </script>
 
@@ -132,7 +163,10 @@ function closeModal() {
                                 {{ company.name }}
                             </th>
                             <td class="px-6 py-4">
-                                <a class="font-medium text-blue-600 dark:text-red-500 hover:underline" href="#">
+                                <a
+                                    class="font-medium text-blue-600 dark:text-red-500 hover:underline"
+                                    href="#"
+                                    @click="showUpdateModal(company)">
                                     Düzenle
                                 </a>
                             </td>
@@ -150,7 +184,7 @@ function closeModal() {
             </div>
         </div>
     </section>
-    <Modal v-if="isShowModal" @close="closeModal">
+    <Modal v-if="isDeleteShowModal" @close="closeDeleteModal">
         <template #header>
             <div class="flex items-center text-lg">Uyarı</div>
         </template>
@@ -165,7 +199,7 @@ function closeModal() {
                 <button
                     class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
                     type="button"
-                    @click="closeModal">
+                    @click="closeDeleteModal">
                     İptal
                 </button>
 
@@ -174,6 +208,36 @@ function closeModal() {
                     type="button"
                     @click="deleteCompany(selectedCompany.id)">
                     Sil
+                </button>
+            </div>
+        </template>
+    </Modal>
+    <Modal v-if="isUpdateShowModal" @close="closeUpdateModal">
+        <template #header>
+            <div class="flex items-center text-lg">Düzenle</div>
+        </template>
+        <template #body>
+            <input
+                id="helper-text"
+                v-model="selectedCompany.name"
+                aria-describedby="helper-text-explanation"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Şirket adı" />
+        </template>
+        <template #footer>
+            <div class="flex justify-between">
+                <button
+                    class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
+                    type="button"
+                    @click="closeUpdateModal">
+                    İptal
+                </button>
+
+                <button
+                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    type="button"
+                    @click="updateCompany(selectedCompany)">
+                    Kaydet
                 </button>
             </div>
         </template>

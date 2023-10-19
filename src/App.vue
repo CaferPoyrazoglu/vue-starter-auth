@@ -6,19 +6,35 @@ import LoadingPage from '@/views/LoadingPage.vue'
 
 <template>
     <NavbarComponentVue />
-    <RouterView v-slot="{ Component }">
+    <router-view v-slot="{ Component }">
         <template v-if="Component">
-            <Suspense timeout="0">
-                <component :is="Component"></component>
-                <template #fallback>
-                    <LoadingPage />
-                </template>
-            </Suspense>
+            <transition name="fade" mode="out-in">
+                <keep-alive>
+                    <suspense>
+                        <component :is="Component"></component>
+                        <template #fallback>
+                            <div>
+                                <LoadingPage />
+                            </div>
+                        </template>
+                    </suspense>
+                </keep-alive>
+            </transition>
         </template>
-    </RouterView>
+    </router-view>
 </template>
 
 <style>
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.32s ease-in;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+}
+
 body {
     background-color: rgb(255, 255, 255);
 }

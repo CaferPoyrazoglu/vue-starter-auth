@@ -52,14 +52,11 @@ const logout = async () => {
 <template>
     <nav
         id="mainNav"
-        class="navbar bg-gradient-to-r from-blue-950 via-blue-950 to-blue-950 navbar-light navbar-expand-md fixed-top navbar-shrink py-2 px-10 shadow-2xl">
+        class="navbar bg-main via-main-950 to-main-950 navbar-light navbar-expand-md fixed-top navbar-shrink py-2 px-10">
         <div class="flex flex-wrap items-center justify-between mx-auto p-2">
             <router-link class="btn" to="/">
                 <a class="flex items-center">
-                    <img
-                        alt="image description"
-                        class="h-auto max-w-full scale-75"
-                        src="src/assets/img/logo-white.png" />
+                    <span class="self-center text-2xl font-semibold whitespace-nowrap text-white">Golive</span>
                 </a>
             </router-link>
 
@@ -91,7 +88,7 @@ const logout = async () => {
                         <router-link class="nav-link" to="/accounts">Hesaplar</router-link>
                     </li>
                     <li v-if="isAuthenticated" class="nav-item">
-                        <router-link class="nav-link" to="/admin">Yönetim</router-link>
+                        <router-link class="nav-link" to="/admin">Ayarlar</router-link>
                     </li>
                     <li v-if="isAuthenticated" class="nav-item">
                         <router-link class="nav-link" to="/profile">Profil</router-link>
