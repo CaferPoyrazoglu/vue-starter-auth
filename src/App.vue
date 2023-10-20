@@ -8,18 +8,14 @@ import LoadingPage from '@/views/LoadingPage.vue'
     <NavbarComponentVue />
     <router-view v-slot="{ Component }">
         <template v-if="Component">
-            <transition name="fade" mode="out-in">
-                <keep-alive>
-                    <suspense>
-                        <component :is="Component"></component>
-                        <template #fallback>
-                            <div>
-                                <LoadingPage />
-                            </div>
-                        </template>
-                    </suspense>
-                </keep-alive>
-            </transition>
+            <suspense>
+                <component :is="Component"></component>
+                <template #fallback>
+                    <div>
+                        <LoadingPage />
+                    </div>
+                </template>
+            </suspense>
         </template>
     </router-view>
 </template>

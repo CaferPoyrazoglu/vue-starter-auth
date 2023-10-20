@@ -52,7 +52,7 @@ const logout = async () => {
 <template>
     <nav
         id="mainNav"
-        class="navbar bg-main via-main-950 to-main-950 navbar-light navbar-expand-md fixed-top navbar-shrink py-2 px-10">
+        class="shadow-lg navbar bg-main via-main-950 to-main-950 navbar-light navbar-expand-md fixed-top navbar-shrink py-2 px-10">
         <div class="flex flex-wrap items-center justify-between mx-auto p-2">
             <router-link class="btn" to="/">
                 <a class="flex items-center">
