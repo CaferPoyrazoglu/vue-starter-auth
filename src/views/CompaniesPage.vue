@@ -81,9 +81,13 @@ async function addNewComapny() {
 
 async function updateCompany() {
     try {
-        await axiosInstance.put('company/update/' + selectedCompany.value.id, selectedCompany.value.name, {
-            withCredentials: true,
-        })
+        await axiosInstance.put(
+            'company/update/' + selectedCompany.value.id,
+            { name: selectedCompany.value.name },
+            {
+                withCredentials: true,
+            }
+        )
 
         await fetchCompanies()
         closeUpdateModal()
