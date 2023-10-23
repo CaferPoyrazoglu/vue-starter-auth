@@ -103,24 +103,24 @@ async function fetchCompanies() {
 }
 
 async function deleteAccount() {
-  try {
-    await axiosInstance.delete('account/remove/' + selectedAccount.value.id, {
-      withCredentials: true,
-    })
+    try {
+        await axiosInstance.delete('account/remove/' + selectedAccount.value.id, {
+            withCredentials: true,
+        })
 
-    await fetchAccounts()
-    closeUpdateModal()
-  } catch (error) {
-    messageStore.status = true
-    if (error.response) {
-      messageStore.message = error.response.data.toString()
-    } else if (error.request) {
-      messageStore.message = 'Sunucuya bağlanılamıyor. Lütfen daha sonra tekrar deneyin.'
-    } else {
-      messageStore.message = 'İsteğiniz gerçekleştirilirken bir hata ile karşılaşıldı.'
+        await fetchAccounts()
+        closeUpdateModal()
+    } catch (error) {
+        messageStore.status = true
+        if (error.response) {
+            messageStore.message = error.response.data.toString()
+        } else if (error.request) {
+            messageStore.message = 'Sunucuya bağlanılamıyor. Lütfen daha sonra tekrar deneyin.'
+        } else {
+            messageStore.message = 'İsteğiniz gerçekleştirilirken bir hata ile karşılaşıldı.'
+        }
+        closeUpdateModal()
     }
-    closeUpdateModal()
-  }
 }
 </script>
 
