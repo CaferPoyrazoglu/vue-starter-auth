@@ -29,7 +29,7 @@ async function fetchAccounts() {
 }
 
 function getDate(date) {
-    return new Date(date * 1000).toLocaleString('tr-TR')
+    return new Date(date).toLocaleString('tr-TR')
 }
 </script>
 
@@ -46,7 +46,7 @@ function getDate(date) {
                     class="overflow-hidden shadow-2xl bg-white rounded-xl border border-gray-100">
                     <div class="px-6 py-4">
                         <div class="font-bold text-xl mb-2">
-                            {{ account.username }}
+                            {{ account.title }}
                         </div>
                         <p class="text-gray-900 text-base">
                             <span class="font-bold">Kullanıcı Adı:</span>
