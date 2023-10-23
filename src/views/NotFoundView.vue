@@ -1,6 +1,6 @@
 <script>
 export default {
-    name: 'NotFoundView',
+    title: 'NotFoundView',
 }
 </script>
 

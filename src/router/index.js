@@ -15,54 +15,54 @@ const router = createRouter({
     routes: [
         {
             path: '/',
-            name: 'home',
+            title: 'home',
             component: HomeView,
         },
         {
             path: '/login',
-            name: 'login',
+            title: 'login',
             component: Login,
             beforeEnter: redirectIfAuthenticated,
         },
         {
             path: '/accounts',
-            name: '/accounts',
+            title: '/accounts',
             component: AccountsPage,
             beforeEnter: authenticatedGuard,
         },
         {
             path: '/account-list',
-            name: '/account-list',
+            title: '/account-list',
             component: AccountListPage,
             beforeEnter: authenticatedGuard,
         },
         {
             path: '/users',
-            name: '/users',
+            title: '/users',
             component: UsersPage,
             beforeEnter: authenticatedGuard,
         },
         {
             path: '/companies',
-            name: '/companies',
+            title: '/companies',
             component: CompaniesPage,
             beforeEnter: authenticatedGuard,
         },
         {
             path: '/admin',
-            name: '/admin',
+            title: '/admin',
             component: AdminPage,
             beforeEnter: authenticatedGuard,
         },
         {
             path: '/profile',
-            name: '/profile',
+            title: '/profile',
             component: ProfilePage,
             beforeEnter: authenticatedGuard,
         },
         {
             path: '/404',
-            name: 'not-found',
+            title: 'not-found',
             component: NotFoundView,
         },
         //404
