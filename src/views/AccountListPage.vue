@@ -7,8 +7,11 @@ import { useMessageStore } from '@/stores'
 const messageStore = useMessageStore()
 const isUpdateModal = ref(false)
 const isCreateModal = ref(false)
+const isAssignModal = ref(false)
 let accountList = ref(null)
 let companyList = ref(null)
+let userList = ref(null)
+let selectedUserList = ref([])
 
 const selectedAccount = ref({
     id: '',
@@ -29,9 +32,19 @@ const newAccount = ref({
 
 await fetchAccounts()
 await fetchCompanies()
+await fetchUsers()
 
 function showCreateNewAccountModal() {
     isCreateModal.value = true
+}
+
+function showAssignUser(account) {
+    isAssignModal.value = true
+    selectedAccount.value.id = account.id
+    selectedAccount.value.title = account.title
+    selectedAccount.value.username = account.username
+    selectedAccount.value.company = account.company
+    selectedAccount.value.details = account.details
 }
 
 function showUpdateModal(account) {
@@ -42,6 +55,7 @@ function showUpdateModal(account) {
     selectedAccount.value.company = account.company
     selectedAccount.value.details = account.details
 }
+
 function closeUpdateModal() {
     isUpdateModal.value = false
 }
@@ -50,23 +64,66 @@ function closeCreateModal() {
     isCreateModal.value = false
 }
 
-async function fetchAccounts() {
-  try {
-    const response = await axiosInstance.get('account/manage', {
-      withCredentials: true,
-    })
+function closeAssignModal() {
+    isAssignModal.value = false
+}
 
-    accountList.value = response.data
-  } catch (error) {
-    messageStore.status = true
-    if (error.response) {
-      messageStore.message = error.response.data.toString()
-    } else if (error.request) {
-      messageStore.message = 'Sunucuya bağlanılamıyor. Lütfen daha sonra tekrar deneyin.'
-    } else {
-      messageStore.message = 'İsteğiniz gerçekleştirilirken bir hata ile karşılaşıldı.'
+async function fetchUsers() {
+    try {
+        const response = await axiosInstance.get('auth/all-users', {
+            withCredentials: true,
+        })
+
+        userList.value = response.data
+    } catch (error) {
+        messageStore.status = true
+        if (error.response) {
+            messageStore.message = error.response.data.toString()
+        } else if (error.request) {
+            messageStore.message = 'Sunucuya bağlanılamıyor. Lütfen daha sonra tekrar deneyin.'
+        } else {
+            messageStore.message = 'İsteğiniz gerçekleştirilirken bir hata ile karşılaşıldı.'
+        }
     }
-  }
+}
+
+async function assignUser() {
+    try {
+        const userStringList = selectedUserList.value.map((user) => user.toString())
+        const response = await axiosInstance.put('account/addUsers/' + selectedAccount.value.id, userStringList, {
+            withCredentials: true,
+        })
+
+        closeAssignModal()
+    } catch (error) {
+        messageStore.status = true
+        if (error.response) {
+            messageStore.message = error.response.data.toString()
+        } else if (error.request) {
+            messageStore.message = 'Sunucuya bağlanılamıyor. Lütfen daha sonra tekrar deneyin.'
+        } else {
+            messageStore.message = 'İsteğiniz gerçekleştirilirken bir hata ile karşılaşıldı.'
+        }
+        closeAssignModal()
+    }
+}
+async function fetchAccounts() {
+    try {
+        const response = await axiosInstance.get('account/manage', {
+            withCredentials: true,
+        })
+
+        accountList.value = response.data
+    } catch (error) {
+        messageStore.status = true
+        if (error.response) {
+            messageStore.message = error.response.data.toString()
+        } else if (error.request) {
+            messageStore.message = 'Sunucuya bağlanılamıyor. Lütfen daha sonra tekrar deneyin.'
+        } else {
+            messageStore.message = 'İsteğiniz gerçekleştirilirken bir hata ile karşılaşıldı.'
+        }
+    }
 }
 
 async function createAccount() {
@@ -100,6 +157,7 @@ async function createAccount() {
         closeCreateModal()
     }
 }
+
 async function updateAccount() {
     try {
         await axiosInstance.put(
@@ -129,8 +187,6 @@ async function updateAccount() {
         closeUpdateModal()
     }
 }
-
-
 
 async function fetchCompanies() {
     try {
@@ -197,6 +253,7 @@ async function deleteAccount() {
                             <th class="px-6 py-3" scope="col">Şirket</th>
                             <th class="px-6 py-3" scope="col">Açıklama</th>
                             <th class="px-6 py-3" scope="col">İşlem</th>
+                            <th class="px-6 py-3" scope="col">İşlem</th>
                         </tr>
                     </thead>
                     <tbody v-for="account in accountList" :key="account">
@@ -228,6 +285,14 @@ async function deleteAccount() {
                                     href="#"
                                     @click="showUpdateModal(account)">
                                     Düzenle
+                                </a>
+                            </td>
+                            <td class="px-6 py-4">
+                                <a
+                                    class="font-medium text-blue-600 dark:text-red-500 hover:underline"
+                                    href="#"
+                                    @click="showAssignUser(account)">
+                                    Kişi Ata
                                 </a>
                             </td>
                         </tr>
@@ -387,6 +452,54 @@ async function deleteAccount() {
                             class="text-white bg-green-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                             type="button"
                             @click="createAccount(newAccount)">
+                            Kaydet
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </Modal>
+    <Modal v-if="isAssignModal" @close="closeAssignModal">
+        <template #header>
+            <div class="flex items-center text-lg">Kiş Ata</div>
+        </template>
+        <template #body>
+            <form>
+                <ul
+                    class="h-48 px-3 pb-3 overflow-y-auto text-sm text-gray-700 dark:text-gray-200"
+                    aria-labelledby="dropdownSearchButton">
+                    <li v-for="user in userList" :key="user.id">
+                        <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                            <input
+                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+                                :value="user.id"
+                                type="checkbox"
+                                v-model="selectedUserList"
+                                id="checkbox" />
+                            <label
+                                class="w-full ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300"
+                                for="checkbox-item-11"
+                                >{{ user.firstName }} {{ user.lastName }}</label
+                            >
+                        </div>
+                    </li>
+                </ul>
+            </form>
+        </template>
+        <template #footer>
+            <div class="flex justify-between">
+                <button
+                    class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
+                    type="button"
+                    @click="closeAssignModal">
+                    İptal
+                </button>
+                <div class="flex justify-between">
+                    <div class="px-2">
+                        <button
+                            class="text-white bg-green-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            type="button"
+                            @click="assignUser()">
                             Kaydet
                         </button>
                     </div>

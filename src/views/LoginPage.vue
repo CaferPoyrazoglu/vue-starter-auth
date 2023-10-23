@@ -1,8 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import axiosInstance from '@/api/axiosInstance'
-import { useAuthStore, useLoadingStateStore } from '@/stores'
-import { useMessageStore } from '@/stores'
+import { useAuthStore, useLoadingStateStore, useMessageStore } from '@/stores'
 import { useRouter } from 'vue-router'
 import LoadingPage from '@/views/LoadingPage.vue'
 
