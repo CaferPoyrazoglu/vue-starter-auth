@@ -248,7 +248,7 @@ async function deleteAccount() {
 
             <div class="columns-2 py-5">
                 <button
-                    class="full text-white bg-green-500 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                    class="full text-white bg-main hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                     type="submit"
                     @click="showCreateNewAccountModal()">
                     Yeni Hesap Ekle
@@ -292,7 +292,7 @@ async function deleteAccount() {
                             </th>
                             <td class="px-6 py-4">
                                 <a
-                                    class="font-medium text-blue-600 dark:text-red-500 hover:underline"
+                                    class="font-medium text-main2 dark:text-red-500 hover:underline"
                                     href="#"
                                     @click="showUpdateModal(account)">
                                     Düzenle
@@ -300,7 +300,7 @@ async function deleteAccount() {
                             </td>
                             <td class="px-6 py-4">
                                 <a
-                                    class="font-medium text-blue-600 dark:text-red-500 hover:underline"
+                                    class="font-medium text-main2 dark:text-red-500 hover:underline"
                                     href="#"
                                     @click="showAssignUser(account)">
                                     Kişi Ata
@@ -323,7 +323,7 @@ async function deleteAccount() {
                     <input
                         id="title"
                         v-model="selectedAccount.title"
-                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main2 focus:border-main2 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-main2 dark:focus:border-main2 dark:shadow-sm-light"
                         placeholder=""
                         required
                         type="text" />
@@ -333,7 +333,7 @@ async function deleteAccount() {
                     <input
                         id="username"
                         v-model="selectedAccount.username"
-                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main2 focus:border-main2 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-main2 dark:focus:border-main2 dark:shadow-sm-light"
                         placeholder=""
                         required
                         type="text" />
@@ -343,7 +343,7 @@ async function deleteAccount() {
                     <input
                         id="username"
                         v-model="selectedAccount.password"
-                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main2 focus:border-main2 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-main2 dark:focus:border-main2 dark:shadow-sm-light"
                         placeholder=""
                         required
                         type="text" />
@@ -353,7 +353,7 @@ async function deleteAccount() {
                     <input
                         id="details"
                         v-model="selectedAccount.details"
-                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main2 focus:border-main2 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-main2 dark:focus:border-main2 dark:shadow-sm-light"
                         placeholder=""
                         required
                         type="text" />
@@ -364,7 +364,7 @@ async function deleteAccount() {
                     <select
                         id="companies"
                         v-model="selectedAccount.company.id"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main2 focus:border-main2 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-main2 dark:focus:border-main2">
                         <option v-for="company in companyList" :value="company.id">{{ company.name }}</option>
                     </select>
                 </div>
@@ -373,7 +373,7 @@ async function deleteAccount() {
         <template #footer>
             <div class="flex justify-between">
                 <button
-                    class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
+                    class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-main2 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
                     type="button"
                     @click="closeUpdateModal">
                     İptal
@@ -381,7 +381,7 @@ async function deleteAccount() {
                 <div class="flex justify-between">
                     <div class="px-2">
                         <button
-                            class="text-white bg-red-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            class="text-white bg-red-700 hover:bg-main2 focus:ring-4 focus:outline-none focus:ring-main2 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-main2 dark:hover:bg-main2 dark:focus:ring-main2"
                             type="button"
                             @click="deleteAccount(selectedAccount)">
                             Bu hesabı sil
@@ -389,7 +389,7 @@ async function deleteAccount() {
                     </div>
                     <div class="px-2">
                         <button
-                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            class="text-white bg-main2 hover:bg-main2 focus:ring-4 focus:outline-none focus:ring-main2 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-main2 dark:hover:bg-main2 dark:focus:ring-main2"
                             type="button"
                             @click="updateAccount(selectedAccount)">
                             Değişiklikleri kaydet
@@ -410,7 +410,7 @@ async function deleteAccount() {
                     <input
                         id="title"
                         v-model="newAccount.accountTitle"
-                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main2 focus:border-main2 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-main2 dark:focus:border-main2 dark:shadow-sm-light"
                         placeholder=""
                         required
                         type="text" />
@@ -421,7 +421,7 @@ async function deleteAccount() {
                         id="username"
                         v-model="newAccount.accountName"
                         autocomplete="username"
-                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main2 focus:border-main2 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-main2 dark:focus:border-main2 dark:shadow-sm-light"
                         placeholder=""
                         required
                         type="text" />
@@ -432,7 +432,7 @@ async function deleteAccount() {
                         id="password"
                         v-model="newAccount.accountPassword"
                         autocomplete="new-password"
-                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main2 focus:border-main2 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-main2 dark:focus:border-main2 dark:shadow-sm-light"
                         placeholder=""
                         required
                         type="password" />
@@ -442,7 +442,7 @@ async function deleteAccount() {
                     <input
                         id="details"
                         v-model="newAccount.accountDetails"
-                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main2 focus:border-main2 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-main2 dark:focus:border-main2 dark:shadow-sm-light"
                         placeholder=""
                         required
                         type="text" />
@@ -453,7 +453,7 @@ async function deleteAccount() {
                     <select
                         id="companies"
                         v-model="newAccount.targetCompanyId"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-main2 focus:border-main2 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-main2 dark:focus:border-main2">
                         <option v-for="company in companyList" :value="company.id">{{ company.name }}</option>
                     </select>
                 </div>
@@ -462,7 +462,7 @@ async function deleteAccount() {
         <template #footer>
             <div class="flex justify-between">
                 <button
-                    class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
+                    class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-main2 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
                     type="button"
                     @click="closeCreateModal">
                     İptal
@@ -470,7 +470,7 @@ async function deleteAccount() {
                 <div class="flex justify-between">
                     <div class="px-2">
                         <button
-                            class="text-white bg-green-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            class="text-white bg-main hover:bg-main2 focus:ring-4 focus:outline-none focus:ring-main2 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-main2 dark:hover:bg-main2 dark:focus:ring-main2"
                             type="button"
                             @click="createAccount(newAccount)">
                             Kaydet
@@ -492,7 +492,7 @@ async function deleteAccount() {
                     <li v-for="user in userList" :key="user">
                         <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
                             <input
-                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+                                class="w-4 h-4 text-main2 bg-gray-100 border-gray-300 rounded focus:ring-main2 dark:focus:ring-main2 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
                                 :value="user"
                                 type="checkbox"
                                 v-model="selectedAccount.users"
@@ -510,7 +510,7 @@ async function deleteAccount() {
         <template #footer>
             <div class="flex justify-between">
                 <button
-                    class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
+                    class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-main2 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
                     type="button"
                     @click="closeAssignModal">
                     İptal
@@ -518,7 +518,7 @@ async function deleteAccount() {
                 <div class="flex justify-between">
                     <div class="px-2">
                         <button
-                            class="text-white bg-green-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            class="text-white bg-main hover:bg-main2 focus:ring-4 focus:outline-none focus:ring-main2 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-main2 dark:hover:bg-main2 dark:focus:ring-main2"
                             type="button"
                             @click="assignUser()">
                             Kaydet
