@@ -18,6 +18,7 @@ const router = createRouter({
             path: '/',
             title: 'home',
             component: HomeView,
+            beforeEnter: authenticatedGuard,
         },
         {
             path: '/login',
@@ -34,37 +35,37 @@ const router = createRouter({
             path: '/accounts',
             title: '/accounts',
             component: AccountsPage,
-            beforeEnter: authenticatedGuard,
+            beforeEnter: userGuard,
         },
         {
             path: '/account-list',
             title: '/account-list',
             component: AccountListPage,
-            beforeEnter: authenticatedGuard,
+            beforeEnter: adminGuard,
         },
         {
             path: '/users',
             title: '/users',
             component: UsersPage,
-            beforeEnter: authenticatedGuard,
+            beforeEnter: adminGuard,
         },
         {
             path: '/companies',
             title: '/companies',
             component: CompaniesPage,
-            beforeEnter: authenticatedGuard,
+            beforeEnter: adminGuard,
         },
         {
             path: '/admin',
             title: '/admin',
             component: AdminPage,
-            beforeEnter: authenticatedGuard,
+            beforeEnter: adminGuard,
         },
         {
             path: '/profile',
             title: '/profile',
             component: ProfilePage,
-            beforeEnter: authenticatedGuard,
+            beforeEnter: userGuard,
         },
         {
             path: '/404',
@@ -82,7 +83,6 @@ const router = createRouter({
 function redirectIfAuthenticated(to, from, next) {
     const authStore = useAuthStore()
     if (authStore.isUserAuthenticated) {
-        console.warn('Zaten giriş yapılmış.')
         next({ name: 'home' })
     } else {
         next()
@@ -95,8 +95,45 @@ function authenticatedGuard(to, from, next) {
     const isUserAuthenticated = authStore.isUserAuthenticated
     if (!isUserAuthenticated) {
         console.warn('Giriş yapılmamış.')
-        next({ name: 'login' })
     } else next()
+}
+
+function userGuard(to, from, next) {
+    const authStore = useAuthStore();
+    const isUserAuthenticated = authStore.isUserAuthenticated;
+
+    //const isUser = authStore.isUser;
+    //const isUserAuthenticatedAndAuthorized = isUserAuthenticated && isUser;
+    //const isUserAuthenticatedAndNotAuthorized = isUserAuthenticated && !isUser;
+
+    if (!isUserAuthenticated) {
+        console.warn("You are not authenticated.");
+        next({ name: "login" });
+    }
+    if (isUserAuthenticated){
+        next();
+
+    }
+
+}
+
+function adminGuard(to, from, next) {
+    const authStore = useAuthStore();
+
+    const isUserAuthenticated = authStore.isUserAuthenticated;
+    const isAdmin = authStore.isAdmin;
+
+    const isUserAuthenticatedAndAuthorized = isUserAuthenticated && isAdmin;
+    const isUserAuthenticatedAndNotAuthorized = isUserAuthenticated && !isAdmin;
+
+    if (!isUserAuthenticated) {
+        next({ name: "login" });
+    }
+    if (isUserAuthenticatedAndAuthorized)
+        next();
+    if (isUserAuthenticatedAndNotAuthorized) {
+        next({ name: "home" });
+    }
 }
 
 export default router

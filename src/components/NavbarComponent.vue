@@ -8,6 +8,7 @@ import AlertComponent from '@/components/AlertComponent.vue'
 const authStore = useAuthStore()
 
 const isAuthenticated = computed(() => authStore.isUserAuthenticated)
+const isAdmin = computed(() => authStore.isAdmin)
 
 function checkAuthenticationStateAndUpdateStore() {
     if (!localStorage.getItem('access_token') && !localStorage.getItem('refresh_token')) {
@@ -87,7 +88,7 @@ const logout = async () => {
                     <li v-if="isAuthenticated" class="nav-item">
                         <router-link class="nav-link" to="/accounts">Hesaplar</router-link>
                     </li>
-                    <li v-if="isAuthenticated" class="nav-item">
+                    <li v-if="isAuthenticated && isAdmin" class="nav-item">
                         <router-link class="nav-link" to="/admin">Ayarlar</router-link>
                     </li>
                     <li v-if="isAuthenticated" class="nav-item">

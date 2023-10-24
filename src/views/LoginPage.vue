@@ -20,11 +20,15 @@ async function login() {
     try {
         loadingStatus.isLoading = true
 
-        const response = await axiosInstance.post('auth/signin', loginRequest.value, { withCredentials: true })
-        const accessToken = response.data.token
+        const loginResponse = await axiosInstance.post('auth/signin', loginRequest.value, { withCredentials: true })
+        const accessToken = loginResponse.data.token
         localStorage.setItem('access_token', accessToken)
         axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`
-        authStore.login('ROLE_USER')
+
+        const profileResponse = await axiosInstance.get('auth/info', {withCredentials: true,})
+        const role = profileResponse.data.role
+
+        authStore.login(role)
         await router.push('/')
         messageStore.status = false
         loadingStatus.isLoading = false
