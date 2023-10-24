@@ -99,40 +99,37 @@ function authenticatedGuard(to, from, next) {
 }
 
 function userGuard(to, from, next) {
-    const authStore = useAuthStore();
-    const isUserAuthenticated = authStore.isUserAuthenticated;
+    const authStore = useAuthStore()
+    const isUserAuthenticated = authStore.isUserAuthenticated
 
     //const isUser = authStore.isUser;
     //const isUserAuthenticatedAndAuthorized = isUserAuthenticated && isUser;
     //const isUserAuthenticatedAndNotAuthorized = isUserAuthenticated && !isUser;
 
     if (!isUserAuthenticated) {
-        console.warn("You are not authenticated.");
-        next({ name: "login" });
+        console.warn('You are not authenticated.')
+        next({ name: 'login' })
     }
-    if (isUserAuthenticated){
-        next();
-
+    if (isUserAuthenticated) {
+        next()
     }
-
 }
 
 function adminGuard(to, from, next) {
-    const authStore = useAuthStore();
+    const authStore = useAuthStore()
 
-    const isUserAuthenticated = authStore.isUserAuthenticated;
-    const isAdmin = authStore.isAdmin;
+    const isUserAuthenticated = authStore.isUserAuthenticated
+    const isAdmin = authStore.isAdmin
 
-    const isUserAuthenticatedAndAuthorized = isUserAuthenticated && isAdmin;
-    const isUserAuthenticatedAndNotAuthorized = isUserAuthenticated && !isAdmin;
+    const isUserAuthenticatedAndAuthorized = isUserAuthenticated && isAdmin
+    const isUserAuthenticatedAndNotAuthorized = isUserAuthenticated && !isAdmin
 
     if (!isUserAuthenticated) {
-        next({ name: "login" });
+        next({ name: 'login' })
     }
-    if (isUserAuthenticatedAndAuthorized)
-        next();
+    if (isUserAuthenticatedAndAuthorized) next()
     if (isUserAuthenticatedAndNotAuthorized) {
-        next({ name: "home" });
+        next({ name: 'home' })
     }
 }
 

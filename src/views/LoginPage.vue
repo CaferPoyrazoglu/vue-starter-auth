@@ -25,7 +25,7 @@ async function login() {
         localStorage.setItem('access_token', accessToken)
         axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`
 
-        const profileResponse = await axiosInstance.get('auth/info', {withCredentials: true,})
+        const profileResponse = await axiosInstance.get('auth/info', { withCredentials: true })
         const role = profileResponse.data.role
 
         authStore.login(role)
