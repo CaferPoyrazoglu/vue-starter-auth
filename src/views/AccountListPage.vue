@@ -94,9 +94,13 @@ async function fetchUsers() {
 
 async function assignUser() {
     try {
-        await axiosInstance.put('account/addUsers/' + selectedAccount.value.id, selectedAccount.value.users.map(user => user.id), {
-            withCredentials: true,
-        })
+        await axiosInstance.put(
+            'account/addUsers/' + selectedAccount.value.id,
+            selectedAccount.value.users.map((user) => user.id),
+            {
+                withCredentials: true,
+            }
+        )
 
         await fetchAccounts()
         closeAssignModal()

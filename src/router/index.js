@@ -9,7 +9,7 @@ import ProfilePage from '@/views/ProfilePage.vue'
 import UsersPage from '@/views/UsersPage.vue'
 import CompaniesPage from '@/views/CompaniesPage.vue'
 import AccountListPage from '@/views/AccountListPage.vue'
-import RegisterPage from "@/views/RegisterPage.vue";
+import RegisterPage from '@/views/RegisterPage.vue'
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),

@@ -47,23 +47,23 @@ async function fetchUsers() {
 }
 
 async function deleteUser() {
-  try {
-    const response = await axiosInstance.delete('auth/delete/' + selectedUser.value.id, {
-      withCredentials: true,
-    })
+    try {
+        const response = await axiosInstance.delete('auth/delete/' + selectedUser.value.id, {
+            withCredentials: true,
+        })
 
-    await fetchUsers()
-    closeModal()
-  } catch (error) {
-    messageStore.status = true
-    if (error.response) {
-      messageStore.message = error.response.data.toString()
-    } else if (error.request) {
-      messageStore.message = 'Sunucuya bağlanılamıyor. Lütfen daha sonra tekrar deneyin.'
-    } else {
-      messageStore.message = 'İsteğiniz gerçekleştirilirken bir hata ile karşılaşıldı.'
+        await fetchUsers()
+        closeModal()
+    } catch (error) {
+        messageStore.status = true
+        if (error.response) {
+            messageStore.message = error.response.data.toString()
+        } else if (error.request) {
+            messageStore.message = 'Sunucuya bağlanılamıyor. Lütfen daha sonra tekrar deneyin.'
+        } else {
+            messageStore.message = 'İsteğiniz gerçekleştirilirken bir hata ile karşılaşıldı.'
+        }
     }
-  }
 }
 </script>
 
@@ -113,7 +113,8 @@ async function deleteUser() {
         </template>
         <template #body>
             <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-              {{ selectedUser.firstName }} {{ selectedUser.lastName }} adlı kullanıcıyı silmek istediğinize emin misiniz?
+                {{ selectedUser.firstName }} {{ selectedUser.lastName }} adlı kullanıcıyı silmek istediğinize emin
+                misiniz?
             </p>
         </template>
         <template #footer>
