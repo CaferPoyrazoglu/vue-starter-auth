@@ -19,6 +19,7 @@ const selectedAccount = ref({
     username: '',
     password: '',
     company: '',
+    users: [],
     details: '',
 })
 
@@ -45,6 +46,8 @@ function showAssignUser(account) {
     selectedAccount.value.username = account.username
     selectedAccount.value.company = account.company
     selectedAccount.value.details = account.details
+    selectedAccount.value.password = account.password
+    selectedAccount.value.users = account.users
 }
 
 function showUpdateModal(account) {
@@ -54,6 +57,8 @@ function showUpdateModal(account) {
     selectedAccount.value.username = account.username
     selectedAccount.value.company = account.company
     selectedAccount.value.details = account.details
+    selectedAccount.value.password = account.password
+    selectedAccount.value.users = account.users
 }
 
 function closeUpdateModal() {
@@ -89,11 +94,11 @@ async function fetchUsers() {
 
 async function assignUser() {
     try {
-        const userStringList = selectedUserList.value.map((user) => user.toString())
-        const response = await axiosInstance.put('account/addUsers/' + selectedAccount.value.id, userStringList, {
+        await axiosInstance.put('account/addUsers/' + selectedAccount.value.id, selectedAccount.value.users.map(user => user.id), {
             withCredentials: true,
         })
 
+        await fetchAccounts()
         closeAssignModal()
     } catch (error) {
         messageStore.status = true
@@ -107,6 +112,7 @@ async function assignUser() {
         closeAssignModal()
     }
 }
+
 async function fetchAccounts() {
     try {
         const response = await axiosInstance.get('account/manage', {
@@ -167,6 +173,7 @@ async function updateAccount() {
                 accountTitle: selectedAccount.value.title,
                 accountName: selectedAccount.value.username,
                 accountDetails: selectedAccount.value.details,
+                accountPassword: selectedAccount.value.password,
             },
             {
                 withCredentials: true,
@@ -328,6 +335,16 @@ async function deleteAccount() {
                         type="text" />
                 </div>
                 <div class="mb-6">
+                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Şifre</label>
+                    <input
+                        id="username"
+                        v-model="selectedAccount.password"
+                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                        placeholder=""
+                        required
+                        type="text" />
+                </div>
+                <div class="mb-6">
                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bilgi</label>
                     <input
                         id="details"
@@ -468,13 +485,13 @@ async function deleteAccount() {
                 <ul
                     class="h-48 px-3 pb-3 overflow-y-auto text-sm text-gray-700 dark:text-gray-200"
                     aria-labelledby="dropdownSearchButton">
-                    <li v-for="user in userList" :key="user.id">
+                    <li v-for="user in userList" :key="user">
                         <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
                             <input
                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-                                :value="user.id"
+                                :value="user"
                                 type="checkbox"
-                                v-model="selectedUserList"
+                                v-model="selectedAccount.users"
                                 id="checkbox" />
                             <label
                                 class="w-full ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300"
