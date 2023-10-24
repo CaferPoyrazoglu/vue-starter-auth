@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
-import Login from '@/views/LoginPage.vue'
+import LoginPage from '@/views/LoginPage.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
 import { useAuthStore } from '@/stores'
 import AccountsPage from '@/views/AccountsPage.vue'
@@ -9,6 +9,7 @@ import ProfilePage from '@/views/ProfilePage.vue'
 import UsersPage from '@/views/UsersPage.vue'
 import CompaniesPage from '@/views/CompaniesPage.vue'
 import AccountListPage from '@/views/AccountListPage.vue'
+import RegisterPage from "@/views/RegisterPage.vue";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -21,8 +22,13 @@ const router = createRouter({
         {
             path: '/login',
             title: 'login',
-            component: Login,
+            component: LoginPage,
             beforeEnter: redirectIfAuthenticated,
+        },
+        {
+            path: '/register',
+            title: 'register',
+            component: RegisterPage,
         },
         {
             path: '/accounts',

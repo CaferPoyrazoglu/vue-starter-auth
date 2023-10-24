@@ -101,6 +101,9 @@ const logout = async () => {
                     <li>
                         <router-link v-if="!isAuthenticated" class="btn" to="/login"> Giriş</router-link>
                     </li>
+                  <li>
+                    <router-link v-if="!isAuthenticated" class="btn" to="/register"> Kayıt</router-link>
+                  </li>
                 </ul>
             </div>
         </div>
