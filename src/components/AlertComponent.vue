@@ -13,7 +13,7 @@ function closeMessage() {
     <div
         v-if="messageStore.status"
         id="alert-1"
-        class="flex items-center p-4 mb-4 text-main2 rounded-lg bg-main2 dark:bg-gray-800 dark:text-main2"
+        class="flex items-center p-4 mb-4 text-white bg-main2 dark:bg-gray-800 dark:text-main2"
         role="alert">
         <svg
             aria-hidden="true"
@@ -30,7 +30,7 @@ function closeMessage() {
         </div>
         <button
             aria-label="Close"
-            class="ml-auto -mx-1.5 -my-1.5 bg-main2 text-main2 rounded-lg focus:ring-2 focus:ring-main2 p-1.5 hover:bg-main2 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-main2 dark:hover:bg-gray-700"
+            class="ml-auto -mx-1.5 -my-1.5 bg-main2 text-white rounded-lg focus:ring-2  p-1.5 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-main2 dark:hover:bg-gray-700"
             data-dismiss-target="#alert-1"
             type="button"
             @click="closeMessage()">
